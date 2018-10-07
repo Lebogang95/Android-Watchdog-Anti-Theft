@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "676545185114",
+    "firebase_url": "https://watchdog-548f7.firebaseio.com",
+    "project_id": "watchdog-548f7",
+    "storage_bucket": "watchdog-548f7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:676545185114:android:1dee96575344a3ab",
+        "android_client_info": {
+          "package_name": "za.co.lbnkosi.watchdog"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "676545185114-dgcnjr350bfbdkokonjp2qqhh0r6uj17.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "za.co.lbnkosi.watchdog",
+            "certificate_hash": "259c8c562121576d8f86496778bb89536774a7b7"
+          }
+        },
+        {
+          "client_id": "676545185114-5ka02ha60c7qs4vsblr990rtkj4etrce.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5i1yXpip_OwM-FDz2fXr68sRNlTxH71w"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "676545185114-5ka02ha60c7qs4vsblr990rtkj4etrce.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
