@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="none">
+        <item
+            android:id="@+id/nav_leads"
+            android:icon="@drawable/ic_build_black_24dp"
+            android:title="Configure Anti Theft" />
+
+        <item
+            android:id="@+id/nav_points_redemption"
+            android:icon="@drawable/ic_account_box_black_24dp"
+            android:title="Account Settings" />
+
+        <item
+            android:id="@+id/nav_dashboard"
+            android:icon="@drawable/ic_monetization_on_black_24dp"
+            android:title="Donate" />
+
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="Home" />
+
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+
+            <item
+                android:id="@+id/nav_privacy_policy"
+                android:icon="@drawable/ic_lock_black_24dp"
+                android:title="Privacy Policy" />
+
+            <item
+                android:id="@+id/nav_contact_us"
+                android:icon="@drawable/ic_call_black_24dp"
+                android:title="Contact Us" />
+
+            <item
+                android:id="@+id/nav_about_app"
+                android:icon="@drawable/ic_memory_black_24dp"
+                android:title="About App" />
+
+        </menu>
+    </item>
+
+    <item android:title="Communicate">
+        <menu>
+
+            <item
+                android:id="@+id/nav_settings"
+                android:icon="@drawable/ic_settings_black_24dp"
+                android:title="Settings" />
+
+        </menu>
+    </item>
+
+</menu>

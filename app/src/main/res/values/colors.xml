@@ -1,6 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#0098cb</color>
+    <color name="colorPrimaryDark">#0288d1</color>
+    <color name="colorAccent">#0288d1</color>
+
+    <color name="logoColorDark">#609bcd</color>
+    <color name="logoColorLight">#95caf6</color>
+
+    <color name="textColorBlueDark">#0098cb</color>
+    <color name="textColorWhite">#ffffff</color>
+    <color name="textColorWhiteOpaque">#76ffffff</color>
+    <color name="textColorBlackOpaque">#cf000000</color>
+    <color name="blackOpaque">#47000000</color>
+    <color name="blackOpaque2">#b3000000</color>
+
+    <color name="navDrawerDark">#111321</color>
+    <color name="navDrawerLight">#7e111321</color>
+
+    <color name="transparentColor">#00ffffff</color>
+    <color name="bluegray">#2196F3</color>
+    <color name="bluegraymedium">#27458d</color>
+    <color name="bluegraydark">#101b37</color>
+    <color name="bluegraydarktransparent">#c4101b37</color>
+    <color name="bluegraydarktransparent2">#d0101b37</color>
+    <color name="black3">#ec000000</color>
+    <!-- Colours...... -->
+    <color name="blue1">#3ebeb0</color>
+    <color name="blue2">#2abbbe</color>
+    <color name="blue3">#03b5d1</color>
+
+    <color name="transparentWhite">#5cffffff</color>
+
+    <color name="colorOverlay">#78ffffff</color>
+
+    <color name="bg_glass">#88ffffff</color>
+
+    <color name="textPrimary">#f5f5f5</color>
+    <color name="textPrimaryDark">#95aab4</color>
+    <color name="errorText">#ff7878</color>
+
+    <!-- Screens background color-->
+    <color name="bg_screen1">#f64c73</color>
+    <color name="bg_screen2">#20d2bb</color>
+    <color name="bg_screen3">#3395ff</color>
+    <color name="bg_screen4">#c873f4</color>
+
+    <!-- dots inactive colors -->
+    <color name="dot_dark_screen1">#0288d1</color>
+    <color name="dot_dark_screen2">#0288d1</color>
+    <color name="dot_dark_screen3">#0288d1</color>
+    <color name="dot_dark_screen4">#0288d1</color>
+
+    <!-- dots active colors -->
+    <color name="dot_light_screen1">#04a6ff</color>
+    <color name="dot_light_screen2">#04a6ff</color>
+    <color name="dot_light_screen3">#04a6ff</color>
+    <color name="dot_light_screen4">#04a6ff</color>
+
+    <array name="array_dot_active">
+        <item>@color/dot_light_screen1</item>
+        <item>@color/dot_light_screen2</item>
+        <item>@color/dot_light_screen3</item>
+        <item>@color/dot_light_screen4</item>
+    </array>
+
+    <array name="array_dot_inactive">
+        <item>@color/dot_dark_screen1</item>
+        <item>@color/dot_dark_screen2</item>
+        <item>@color/dot_dark_screen3</item>
+        <item>@color/dot_dark_screen4</item>
+    </array>
 </resources>

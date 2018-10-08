@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="logoSizeSplashScreen">100dp</dimen>
+
+    <dimen name="textSizeSmall">12sp</dimen>
+    <dimen name="textSizeMedium">16sp</dimen>
+    <dimen name="textSizeLarge">18sp</dimen>
+
+    <dimen name="buttonSize">30dp</dimen>
+    <dimen name="buttonSizeSmall">20dp</dimen>
+
+    <dimen name="editText">30dp</dimen>
+    <dimen name="editTextSmall">20dp</dimen>
+
+</resources>
