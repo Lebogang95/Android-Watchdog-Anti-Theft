@@ -18,7 +18,7 @@
                 android:id="@+id/imageView1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/background14"
+                android:src="@drawable/background18"
                 android:scaleType="centerCrop"
                 tools:ignore="ContentDescription" />
 
@@ -118,7 +118,7 @@
                 android:textColor="@color/textColorWhite"
                 android:textSize="@dimen/textSizeSmall"
                 android:fontFamily="@font/droid_sans_chinese"
-                android:background="@drawable/button_stroke_white"/>
+                android:background="@drawable/button_stroke_white2"/>
 
             <Button
                 android:id="@+id/button_signout"

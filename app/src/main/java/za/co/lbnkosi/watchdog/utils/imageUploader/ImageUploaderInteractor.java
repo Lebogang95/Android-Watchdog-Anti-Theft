@@ -5,13 +5,11 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.net.Uri;
 import android.os.Build;
-import android.support.annotation.NonNull;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.signature.StringSignature;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -86,7 +84,7 @@ public class ImageUploaderInteractor implements ImageUploaderContract.Intractor 
         Glide.with(activity)
                 .using(new FirebaseImageLoader())
                 .load(storageReference)
-                .error(R.drawable.background14)
+                .error(R.drawable.background18)
                 .signature(new StringSignature(System.currentTimeMillis()+""))
                 .into(imageView);
 
@@ -111,7 +109,7 @@ public class ImageUploaderInteractor implements ImageUploaderContract.Intractor 
                 Glide.with(activity)
                         .using(new FirebaseImageLoader())
                         .load(storageReference)
-                        .error(R.drawable.background14)
+                        .error(R.drawable.background18)
                         .signature(new StringSignature(System.currentTimeMillis()+""))
                         .into(imageView);
             }

@@ -351,7 +351,7 @@ public abstract class BaseActivity extends AppCompatActivity
 
     @Override
     public void setBackground(ImageView imageView){
-        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.background14);
+        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.background18);
         Bitmap blurredBitmap = BlurBack.blur( this, bm );
         //imageView.setBackgroundDrawable( new BitmapDrawable( getResources(), blurredBitmap ) );
         imageView.setImageBitmap(blurredBitmap);
@@ -404,7 +404,7 @@ public abstract class BaseActivity extends AppCompatActivity
     public void blurBackground(int view){
         ImageView imageView;
         imageView = findViewById(view);
-        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.background14);
+        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.background18);
         Bitmap blurredBitmap = BlurBack.blur( this, bm );
         imageView.setImageBitmap(blurredBitmap);
 

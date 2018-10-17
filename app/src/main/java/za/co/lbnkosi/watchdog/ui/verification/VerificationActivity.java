@@ -73,7 +73,7 @@ public class VerificationActivity extends VerificationBaseActivity {
         editText.setText(firebaseUser);
 
         imageView = findViewById(R.id.imageView1);
-        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.background14);
+        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.background18);
         Bitmap blurredBitmap = BlurBack.blur( this, bm );
         //imageView.setBackgroundDrawable( new BitmapDrawable( getResources(), blurredBitmap ) );
         imageView.setImageBitmap(blurredBitmap);

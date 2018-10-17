@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin32dp"
+            android:layout_marginEnd="@dimen/margin32dp"
+            android:orientation="vertical"
+            android:layout_centerInParent="true"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Watchdog Lock"
+                android:fontFamily="@font/droid_sans_chinese"
+                android:textSize="30sp"
+                android:textColor="@color/textColorWhite"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin16dp"
+                android:text="This device has been locked by it's owner."
+                android:fontFamily="@font/droid_sans_chinese"
+                android:textSize="17sp"
+                android:textColor="@color/textColorWhite"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin16dp"
+                android:text="Please return to Lebogang"
+                android:fontFamily="@font/droid_sans_chinese"
+                android:textSize="16sp"
+                android:textColor="@color/textColorWhite"
+                android:gravity="center"/>
+
+            <View
+                android:layout_width="10dp"
+                android:layout_height="1px"
+                android:background="@color/transparentWhite"
+                android:layout_marginTop="@dimen/margin16dp"
+                android:layout_marginBottom="@dimen/margin16dp"
+                android:visibility="invisible"/>
+
+
+            <EditText
+                android:id="@+id/pinedit"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:inputType="textPassword"
+                android:paddingStart="16dp"
+                android:layout_marginBottom="@dimen/margin16dp"
+                android:textColor="@color/textColorWhite"
+                android:fontFamily="@font/droid_sans_chinese"
+                android:background="@drawable/edittext_background2"
+                android:hint="@string/hintPassword"
+                android:paddingLeft="16dp"
+                tools:ignore="RtlSymmetry" />
+
+
+            <Button
+                android:id="@+id/button_unlock"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/buttonSize"
+                android:text="Unlock"
+                android:textColor="@color/textColorWhite"
+                android:textSize="@dimen/textSizeSmall"
+                android:fontFamily="@font/droid_sans_chinese"
+                android:background="@drawable/button_solid_blue" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
+
+</RelativeLayout>

@@ -3,13 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:drawable="@android:color/black"
+        android:drawable="@android:color/white"
         />
 
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@drawable/common_full_open_on_phone" />
+            android:src="@mipmap/ic_launcher_foreground" />
     </item>
 
 </layer-list>

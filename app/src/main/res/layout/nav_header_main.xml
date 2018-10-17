@@ -103,7 +103,7 @@
                 android:layout_marginTop="@dimen/margin32dp"
                 android:layout_marginStart="@dimen/margin16dp"
                 android:layout_marginEnd="@dimen/margin16dp"
-                android:background="@drawable/button_stroke_white"
+                android:background="@drawable/button_stroke_white2"
                 android:fontFamily="@font/droid_sans_chinese"
                 android:text="Sign Out"
                 android:textColor="@color/textColorWhite"/>

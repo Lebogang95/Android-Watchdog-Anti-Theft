@@ -51,7 +51,7 @@ public class FingerprintActivity extends BaseActivity {
         transparentStatusBar();
         ImageView imageView = findViewById(R.id.imageView1);
         imageView = findViewById(R.id.imageView1);
-        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.background14);
+        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.background18);
         Bitmap blurredBitmap = BlurBack.blur( this, bm );
         //imageView.setBackgroundDrawable( new BitmapDrawable( getResources(), blurredBitmap ) );
         imageView.setImageBitmap(blurredBitmap);

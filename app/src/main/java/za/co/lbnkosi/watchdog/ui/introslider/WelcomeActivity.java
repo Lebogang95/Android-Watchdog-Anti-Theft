@@ -55,7 +55,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
         ImageView imageView2;
         imageView2 = findViewById(R.id.imageView1);
-        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.background14);
+        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.background18);
         Bitmap blurredBitmap = BlurBack.blur( this, bm );
         //imageView.setBackgroundDrawable( new BitmapDrawable( getResources(), blurredBitmap ) );
         imageView2.setImageBitmap(blurredBitmap);

@@ -71,7 +71,7 @@ public class RegisterActivity extends RegisterBaseActivity implements  Registrat
         });
 
         imageView = findViewById(R.id.imageView1);
-        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.background14);
+        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.background18);
         Bitmap blurredBitmap = BlurBack.blur( this, bm );
         imageView.setImageBitmap(blurredBitmap);
 
