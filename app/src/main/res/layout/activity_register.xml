@@ -2,33 +2,55 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/logoColorDark">
 
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imageView1"
+        <FrameLayout
+            android:id="@+id/frameLayout1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/background18"
-            android:scaleType="centerCrop"/>
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/materialbackground3"
+                android:scaleType="centerCrop"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/black"
+                android:alpha="0.1"
+                android:visibility="gone"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/gradient_bg"
+                android:visibility="gone">
+            </FrameLayout>
+
+        </FrameLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@android:color/black"
-            android:alpha="0.4"/>
+            android:background="@color/colorPrimary"
+            android:alpha="0.8"/>
 
-        <FrameLayout
+        <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/gradient_bg" >
-        </FrameLayout>
+            android:background="@color/colorPrimary"
+            android:layout_marginBottom="-400dp"
+            android:alpha="0.5"
+            android:rotation="80"/>
 
-    </FrameLayout>
+    </RelativeLayout>
 
     <android.support.v4.widget.NestedScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -50,199 +72,144 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-                <LinearLayout
-                    android:id="@+id/registration_layout"
-                    android:layout_width="match_parent"
+            <LinearLayout
+                android:id="@+id/registration_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_centerInParent="true"
+                android:paddingTop="32dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_centerInParent="true"
-                    android:paddingTop="32dp">
+                    android:text="Personal Details"
+                    android:textColor="@color/textColorWhite"
+                    android:fontFamily="@font/droid_sans_chinese"
+                    android:layout_marginTop="@dimen/margin16dp"
+                    android:layout_marginBottom="@dimen/margin16dp"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Personal Details"
-                        android:textColor="@color/textColorWhite"
-                        android:fontFamily="@font/droid_sans_chinese"
-                        android:layout_marginTop="@dimen/margin16dp"
-                        android:layout_marginBottom="@dimen/margin16dp"/>
+                <EditText
+                    android:id="@+id/register_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/editText"
+                    android:padding="10dp"
+                    android:inputType="textPersonName"
+                    android:layout_marginBottom="@dimen/margin16dp"
+                    android:textColor="@color/textColorWhite"
+                    android:fontFamily="@font/droid_sans_chinese"
+                    android:background="@drawable/edittext_background2"
+                    android:hint="Name"/>
 
-                    <EditText
-                        android:id="@+id/register_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/editText"
-                        android:padding="10dp"
-                        android:inputType="textPersonName"
-                        android:layout_marginBottom="@dimen/margin16dp"
-                        android:textColor="@color/textColorWhite"
-                        android:fontFamily="@font/droid_sans_chinese"
-                        android:background="@drawable/edittext_background2"
-                        android:hint="Name"/>
+                <EditText
+                    android:id="@+id/register_surname"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/editText"
+                    android:padding="10dp"
+                    android:inputType="textPersonName"
+                    android:layout_marginBottom="@dimen/margin16dp"
+                    android:textColor="@color/textColorWhite"
+                    android:fontFamily="@font/droid_sans_chinese"
+                    android:background="@drawable/edittext_background2"
+                    android:hint="Surname"/>
 
-                    <EditText
-                        android:id="@+id/register_surname"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/editText"
-                        android:padding="10dp"
-                        android:inputType="textPersonName"
-                        android:layout_marginBottom="@dimen/margin16dp"
-                        android:textColor="@color/textColorWhite"
-                        android:fontFamily="@font/droid_sans_chinese"
-                        android:background="@drawable/edittext_background2"
-                        android:hint="Surname"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Contact Details"
+                    android:textColor="@color/textColorWhite"
+                    android:fontFamily="@font/droid_sans_chinese"
+                    android:layout_marginTop="@dimen/margin16dp"
+                    android:layout_marginBottom="@dimen/margin16dp"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Contact Details"
-                        android:textColor="@color/textColorWhite"
-                        android:fontFamily="@font/droid_sans_chinese"
-                        android:layout_marginTop="@dimen/margin16dp"
-                        android:layout_marginBottom="@dimen/margin16dp"/>
+                <EditText
+                    android:id="@+id/register_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/editText"
+                    android:padding="10dp"
+                    android:inputType="number"
+                    android:layout_marginBottom="@dimen/margin16dp"
+                    android:textColor="@color/textColorWhite"
+                    android:fontFamily="@font/droid_sans_chinese"
+                    android:background="@drawable/edittext_background2"
+                    android:hint="Phone Number"/>
 
-                    <EditText
-                        android:id="@+id/register_number"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/editText"
-                        android:padding="10dp"
-                        android:inputType="number"
-                        android:layout_marginBottom="@dimen/margin16dp"
-                        android:textColor="@color/textColorWhite"
-                        android:fontFamily="@font/droid_sans_chinese"
-                        android:background="@drawable/edittext_background2"
-                        android:hint="Phone Number"/>
+                <EditText
+                    android:id="@+id/register_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/editText"
+                    android:padding="10dp"
+                    android:inputType="textEmailAddress"
+                    android:layout_marginBottom="@dimen/margin16dp"
+                    android:textColor="@color/textColorWhite"
+                    android:fontFamily="@font/droid_sans_chinese"
+                    android:background="@drawable/edittext_background2"
+                    android:hint="Email"/>
 
-                    <EditText
-                        android:id="@+id/register_email"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/editText"
-                        android:padding="10dp"
-                        android:inputType="textEmailAddress"
-                        android:layout_marginBottom="@dimen/margin16dp"
-                        android:textColor="@color/textColorWhite"
-                        android:fontFamily="@font/droid_sans_chinese"
-                        android:background="@drawable/edittext_background2"
-                        android:hint="Email"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Security"
+                    android:textColor="@color/textColorWhite"
+                    android:fontFamily="@font/droid_sans_chinese"
+                    android:layout_marginTop="@dimen/margin16dp"
+                    android:layout_marginBottom="@dimen/margin16dp"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Banking Details"
-                        android:textColor="@color/textColorWhite"
-                        android:fontFamily="@font/droid_sans_chinese"
-                        android:layout_marginTop="@dimen/margin16dp"
-                        android:layout_marginBottom="@dimen/margin16dp"/>
+                <EditText
+                    android:id="@+id/register_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/editText"
+                    android:padding="10dp"
+                    android:inputType="textPassword"
+                    android:layout_marginBottom="@dimen/margin16dp"
+                    android:textColor="@color/textColorWhite"
+                    android:fontFamily="@font/droid_sans_chinese"
+                    android:background="@drawable/edittext_background2"
+                    android:hint="Password"/>
 
-                    <EditText
-                        android:id="@+id/register_id"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/editText"
-                        android:padding="10dp"
-                        android:layout_marginBottom="@dimen/margin16dp"
-                        android:textColor="@color/textColorWhite"
-                        android:fontFamily="@font/droid_sans_chinese"
-                        android:background="@drawable/edittext_background2"
-                        android:hint="I.D. Number"
-                        android:inputType="number"/>
+                <EditText
+                    android:id="@+id/register_confirmpassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/editText"
+                    android:padding="10dp"
+                    android:inputType="textPassword"
+                    android:layout_marginBottom="@dimen/margin16dp"
+                    android:textColor="@color/textColorWhite"
+                    android:fontFamily="@font/droid_sans_chinese"
+                    android:background="@drawable/edittext_background2"
+                    android:hint="Confirm Password"/>
 
-                    <EditText
-                        android:id="@+id/register_bankaccount"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/editText"
-                        android:padding="10dp"
-                        android:layout_marginBottom="@dimen/margin16dp"
-                        android:textColor="@color/textColorWhite"
-                        android:fontFamily="@font/droid_sans_chinese"
-                        android:background="@drawable/edittext_background2"
-                        android:hint="Bank Account Number"
-                        android:inputType="number"/>
+                <Button
+                    android:id="@+id/button_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/buttonSize"
+                    android:layout_marginTop="@dimen/margin32dp"
+                    android:layout_marginBottom="@dimen/margin32dp"
+                    android:text="@string/register_string"
+                    android:textColor="@color/textColorWhite"
+                    android:textSize="@dimen/textSizeSmall"
+                    android:fontFamily="@font/droid_sans_chinese"
+                    android:background="@drawable/button_solid_blackopaque"/>
 
-                    <EditText
-                        android:id="@+id/register_branchcode"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/editText"
-                        android:padding="10dp"
-                        android:layout_marginBottom="@dimen/margin16dp"
-                        android:textColor="@color/textColorWhite"
-                        android:fontFamily="@font/droid_sans_chinese"
-                        android:background="@drawable/edittext_background2"
-                        android:hint="Branch Code"/>
-
-                    <EditText
-                        android:id="@+id/register_bankname"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/editText"
-                        android:padding="10dp"
-                        android:layout_marginBottom="@dimen/margin16dp"
-                        android:textColor="@color/textColorWhite"
-                        android:fontFamily="@font/droid_sans_chinese"
-                        android:background="@drawable/edittext_background2"
-                        android:hint="Bank Name"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Security"
-                        android:textColor="@color/textColorWhite"
-                        android:fontFamily="@font/droid_sans_chinese"
-                        android:layout_marginTop="@dimen/margin16dp"
-                        android:layout_marginBottom="@dimen/margin16dp"/>
-
-                    <EditText
-                        android:id="@+id/register_password"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/editText"
-                        android:padding="10dp"
-                        android:inputType="textPassword"
-                        android:layout_marginBottom="@dimen/margin16dp"
-                        android:textColor="@color/textColorWhite"
-                        android:fontFamily="@font/droid_sans_chinese"
-                        android:background="@drawable/edittext_background2"
-                        android:hint="Password"/>
-
-                    <EditText
-                        android:id="@+id/register_confirmpassword"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/editText"
-                        android:padding="10dp"
-                        android:inputType="textPassword"
-                        android:layout_marginBottom="@dimen/margin16dp"
-                        android:textColor="@color/textColorWhite"
-                        android:fontFamily="@font/droid_sans_chinese"
-                        android:background="@drawable/edittext_background2"
-                        android:hint="Confirm Password"/>
-
-                    <Button
-                        android:id="@+id/button_register"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/buttonSize"
-                        android:layout_marginTop="@dimen/margin32dp"
-                        android:layout_marginBottom="@dimen/margin32dp"
-                        android:text="@string/register_string"
-                        android:textColor="@color/textColorWhite"
-                        android:textSize="@dimen/textSizeSmall"
-                        android:fontFamily="@font/droid_sans_chinese"
-                        android:background="@drawable/button_solid_blue"/>
-
-                </LinearLayout>
+            </LinearLayout>
 
         </RelativeLayout>
 
     </android.support.v4.widget.NestedScrollView>
 
-        <TextView
-            android:id="@+id/textview_register"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin16dp"
-            android:layout_marginTop="@dimen/margin32dp"
-            android:layout_centerHorizontal="true"
-            android:gravity="center"
-            android:fontFamily="@font/droid_sans_chinese"
-            android:textSize="12sp"
-            android:layout_alignParentBottom="true"
-            android:text="By signing up you agree to the Walkers and Talkers terms"
-            android:textColor="@color/textColorWhite"/>
+    <TextView
+        android:id="@+id/textview_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin16dp"
+        android:layout_marginTop="@dimen/margin32dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:fontFamily="@font/droid_sans_chinese"
+        android:textSize="12sp"
+        android:layout_alignParentBottom="true"
+        android:text="By signing up you agree to the Walkers and Talkers terms"
+        android:textColor="@color/textColorWhite"/>
 
     <ProgressBar
         android:id="@+id/progress_bar"

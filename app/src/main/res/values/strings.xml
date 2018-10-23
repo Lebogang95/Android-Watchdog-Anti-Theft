@@ -114,6 +114,8 @@
         <item>3</item>
     </string-array>
 
+    <string name="wavenumber">2</string>
+
     <string-array name="multi_select_list_preference_default_value" />
 
     <string name="pref_title_system_sync_settings">System sync settings</string>
@@ -142,4 +144,10 @@
     <string name="welcome">Welcome</string>
     <string name="password">Password</string>
     <string name="registerUser">Register</string>
+
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="privacy_policy_preview">Watchdog ("us", "we", or "our") operates the Watchdog mobile application (the "Service").</string>
+    <string name="privacy_policy_preview2">This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data. Our Privacy Policy for Watchdog is managed through Free Privacy Policy.</string>
+    <string name="privacy_policy_preview3">We use your data to provide and improve the Service. By using the Service, you agree to the collection and use of information in accordance with this policy. Unless otherwise defined in this Privacy Policy, terms used in this Privacy Policy have the same meanings as in our Terms and Conditions.</string>
+    <string name="privacy_policy_accept">By using this Site, you signify your acceptance of this policy. If you do not agree to this policy, please do not use our Site. Your continued use of the Site following the posting of changes to this policy will be deemed your acceptance of those changes.</string>
 </resources>

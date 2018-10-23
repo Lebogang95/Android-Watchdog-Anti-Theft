@@ -1,6 +1,5 @@
 package za.co.lbnkosi.watchdog.ui.logind;
 
-import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -10,7 +9,6 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ProgressBar;
-
 import za.co.lbnkosi.watchdog.R;
 
 
@@ -35,11 +33,7 @@ public abstract class LoginBaseActivity extends AppCompatActivity implements Log
         builder1.setCancelable(true);
         builder1.setNegativeButton(
                 "Try Again",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
+                (dialog, id) -> dialog.cancel());
         AlertDialog alert11 = builder1.create();
         alert11.show();
     }
@@ -52,11 +46,9 @@ public abstract class LoginBaseActivity extends AppCompatActivity implements Log
         builder1.setCancelable(false);
         builder1.setNegativeButton(
                 "Close Application",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                        finish();
-                    }
+                (dialog, id) -> {
+                    dialog.cancel();
+                    finish();
                 });
         AlertDialog alert11 = builder1.create();
         alert11.show();

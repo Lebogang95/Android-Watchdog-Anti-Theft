@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
@@ -20,6 +21,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.yqritc.scalablevideoview.ScalableType;
+import com.yqritc.scalablevideoview.ScalableVideoView;
+
+import java.io.IOException;
 
 import za.co.lbnkosi.watchdog.R;
 import za.co.lbnkosi.watchdog.ui.logind.LoginActivity;
@@ -53,13 +59,13 @@ public class WelcomeActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_welcome);
 
-        ImageView imageView2;
+        /*ImageView imageView2;
         imageView2 = findViewById(R.id.imageView1);
         Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.background18);
         Bitmap blurredBitmap = BlurBack.blur( this, bm );
         //imageView.setBackgroundDrawable( new BitmapDrawable( getResources(), blurredBitmap ) );
         imageView2.setImageBitmap(blurredBitmap);
-
+*/
         viewPager = findViewById(R.id.view_pager);
         dotsLayout = findViewById(R.id.layoutDots);
         btnSkip = findViewById(R.id.btn_skip);
@@ -105,6 +111,22 @@ public class WelcomeActivity extends AppCompatActivity {
                 }
             }
         });
+
+        ScalableVideoView mVideoView = findViewById(R.id.video_view);
+        try {
+            mVideoView.setRawData(R.raw.backgroundvid);
+            mVideoView.setVolume(0, 0);
+            mVideoView.setLooping(true);
+            mVideoView.setScalableType(ScalableType.CENTER_CROP);
+            mVideoView.prepare(new MediaPlayer.OnPreparedListener() {
+                @Override
+                public void onPrepared(MediaPlayer mp) {
+                    mVideoView.start();
+                }
+            });
+        } catch (IOException ioe) {
+            //ignore
+        }
     }
 
     private void addBottomDots(int currentPage) {

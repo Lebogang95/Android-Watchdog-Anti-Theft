@@ -1,141 +1,493 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/backgroundColor">
+
+    <fr.castorflex.android.smoothprogressbar.SmoothProgressBar
+        android:id="@+id/progress_bar"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        app:spb_sections_count="4"
+        app:spb_color="#FF0000"
+        app:spb_speed="2.0"
+        app:spb_stroke_width="4dp"
+        app:spb_stroke_separator_length="4dp"
+        app:spb_reversed="false"
+        app:spb_mirror_mode="false"
+        app:spb_progressiveStart_activated="true"
+        app:spb_progressiveStart_speed="1.5"
+        app:spb_progressiveStop_speed="3.4"
+        android:visibility="invisible"
+        />
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:descendantFocusability="blocksDescendants"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp">
+
+                <com.scwang.wave.MultiWaveHeader
+                    android:id="@+id/waveHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:scaleY="1"
+                    app:mwhVelocity="2"
+                    app:mwhProgress="1"
+                    app:mwhGradientAngle="90"
+                    app:mwhWaveHeight="30dp"
+                    app:mwhColorAlpha="0.30"
+                    app:mwhStartColor="@color/colorPrimary"
+                    app:mwhCloseColor="@color/colorPrimary"
+                    app:mwhWaves="MultiWave">
+
+                </com.scwang.wave.MultiWaveHeader>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:layout_centerHorizontal="true"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/citybackground1"
+                        app:civ_border_color="@color/white"
+                        app:civ_border_width="2dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin16dp"
+                        android:text="Lebogang Nkosi"
+                        android:textColor="@color/textColorWhite"
+                        android:fontFamily="@font/droid_sans_chinese"
+                        android:textSize="@dimen/textSizeLarge"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin8dp"
+                        android:text="Watchdog is active"
+                        android:textColor="@color/textColorWhite"
+                        android:fontFamily="@font/droid_sans_chinese"
+                        android:textSize="@dimen/textSizeSmall"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/infoicon"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="@dimen/margin16dp"
+                    android:layout_marginEnd="@dimen/margin16dp"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/ic_info_outline_black_24dp"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="64dp"
+                android:text="Dashboard"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/droid_sans_chinese"
+                android:textSize="@dimen/textSizeLarge"
+                android:gravity="center"/>
+
+            <View
+                android:layout_width="200dp"
+                android:layout_height="1px"
+                android:layout_marginTop="@dimen/margin16dp"
+                android:background="@color/textColorWhiteOpaque" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginStart="@dimen/margin16dp"
+                android:layout_marginEnd="@dimen/margin16dp"
+                android:layout_marginTop="@dimen/margin32dp"
+                android:layout_marginBottom="@dimen/margin16dp"
+                android:orientation="vertical"
+                android:layout_centerInParent="true">
 
-                <android.support.v7.widget.Toolbar
-                    android:id="@+id/toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    android:background="@color/statusBarColor"
-                    app:layout_collapseMode="pin">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginStart="@dimen/margin16dp"
-                        android:layout_marginEnd="@dimen/margin16dp"
-                        android:gravity="center">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Status: Enabled"
-                            android:fontFamily="@font/droid_sans_chinese"
-                            android:textColor="@color/textColorWhite"
-                            android:textSize="@dimen/textSizeSmall"
-                            android:layout_centerVertical="true"/>
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin16dp"
-                            android:src="@drawable/ic_power_settings_new_black_24dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:layout_alignParentRight="true" />
-
-                    </RelativeLayout>
-
-                </android.support.v7.widget.Toolbar>
-
-                <LinearLayout
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cardviewAccount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_below="@id/toolbar">
+                    android:layout_marginBottom="@dimen/margin16dp"
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="5dp">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="400dp"
-                        android:orientation="vertical"
-                        android:layout_gravity="center_horizontal|center_vertical">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:src="@drawable/materialbackground3"
-                            android:scaleType="centerCrop"/>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/statusBarColor2"
-                            android:alpha="0.9"/>
+                        android:layout_height="wrap_content">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_centerInParent="true"
-                            android:gravity="center">
+                            android:layout_marginTop="@dimen/margin16dp"
+                            android:layout_marginBottom="@dimen/margin16dp"
+                            android:orientation="horizontal">
 
-                            <TextView
-                                android:id="@+id/status"
+                            <ImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_marginStart="@dimen/margin16dp"
+                                android:layout_marginEnd="@dimen/margin32dp"
+                                android:layout_gravity="center_vertical"
+                                android:src="@drawable/ic_account_box_black_24dp"/>
+
+                            <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Status: Enabled"
-                                android:fontFamily="@font/droid_sans_chinese"
-                                android:textColor="@color/textColorWhite"
-                                android:textSize="@dimen/textSizeLarge"/>
+                                android:orientation="vertical"
+                                android:layout_gravity="center_vertical">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin16dp"
-                                android:text="Performance: High"
-                                android:fontFamily="@font/droid_sans_chinese"
-                                android:textColor="@color/textColorWhite"
-                                android:textSize="@dimen/textSizeSmall"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="5dp"
+                                    android:text="Account"
+                                    android:textStyle="bold"
+                                    android:textSize="@dimen/textSizeLarge"
+                                    android:textColor="@color/blueGrey"
+                                    android:fontFamily="@font/droid_sans_chinese"
+                                    android:alpha="0.8"/>
 
-                            <Button
-                                android:id="@+id/appbar_button"
-                                android:layout_width="200dp"
-                                android:layout_height="@dimen/buttonSize"
-                                android:layout_marginTop="@dimen/margin32dp"
-                                android:background="@color/blackOpaque"
-                                android:text="Enable Watchdog"
-                                android:textColor="@color/textColorWhite"
-                                android:fontFamily="@font/droid_sans_chinese"
-                                android:textSize="@dimen/textSizeSmall"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Delete your account, sign out"
+                                    android:textColor="@color/textColorWhiteOpaque"
+                                    android:fontFamily="@font/droid_sans_chinese"/>
+
+                            </LinearLayout>
 
                         </LinearLayout>
 
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_marginStart="@dimen/margin16dp"
+                            android:layout_marginEnd="@dimen/margin16dp"
+                            android:src="@drawable/ic_navigate_next_black_24dp"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentEnd="true"
+                            android:alpha="0.8"/>
+
                     </RelativeLayout>
 
-                </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cardviewConfigure"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin16dp"
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="5dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin16dp"
+                            android:layout_marginBottom="@dimen/margin16dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_marginStart="@dimen/margin16dp"
+                                android:layout_marginEnd="@dimen/margin32dp"
+                                android:layout_gravity="center_vertical"
+                                android:src="@drawable/ic_build_black_24dp"/>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_gravity="center_vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="5dp"
+                                    android:text="Configure"
+                                    android:textStyle="bold"
+                                    android:textSize="@dimen/textSizeLarge"
+                                    android:textColor="@color/blueGrey"
+                                    android:fontFamily="@font/droid_sans_chinese"
+                                    android:alpha="0.8"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Make changes to Watchdog"
+                                    android:textColor="@color/textColorWhiteOpaque"
+                                    android:fontFamily="@font/droid_sans_chinese"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_marginStart="@dimen/margin16dp"
+                            android:layout_marginEnd="@dimen/margin16dp"
+                            android:src="@drawable/ic_navigate_next_black_24dp"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentEnd="true"
+                            android:alpha="0.8"/>
+
+                    </RelativeLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cardviewSettings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin16dp"
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="5dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin16dp"
+                            android:layout_marginBottom="@dimen/margin16dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_marginStart="@dimen/margin16dp"
+                                android:layout_marginEnd="@dimen/margin32dp"
+                                android:layout_gravity="center_vertical"
+                                android:src="@drawable/ic_settings_black_24dp"/>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_gravity="center_vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="5dp"
+                                    android:text="Settings"
+                                    android:textStyle="bold"
+                                    android:textSize="@dimen/textSizeLarge"
+                                    android:textColor="@color/blueGrey"
+                                    android:fontFamily="@font/droid_sans_chinese"
+                                    android:alpha="0.8"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Make changes to the app"
+                                    android:textColor="@color/textColorWhiteOpaque"
+                                    android:fontFamily="@font/droid_sans_chinese"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_marginStart="@dimen/margin16dp"
+                            android:layout_marginEnd="@dimen/margin16dp"
+                            android:src="@drawable/ic_navigate_next_black_24dp"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentEnd="true"
+                            android:alpha="0.8"/>
+
+                    </RelativeLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cardviewDonate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin16dp"
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="5dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin16dp"
+                            android:layout_marginBottom="@dimen/margin16dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_marginStart="@dimen/margin16dp"
+                                android:layout_marginEnd="@dimen/margin32dp"
+                                android:layout_gravity="center_vertical"
+                                android:src="@drawable/ic_monetization_on_black_24dp"/>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_gravity="center_vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="5dp"
+                                    android:text="Donate"
+                                    android:textStyle="bold"
+                                    android:textSize="@dimen/textSizeLarge"
+                                    android:textColor="@color/blueGrey"
+                                    android:fontFamily="@font/droid_sans_chinese"
+                                    android:alpha="0.8"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="This app is free and all but a cup of coffee would be nice"
+                                    android:textColor="@color/textColorWhiteOpaque"
+                                    android:fontFamily="@font/droid_sans_chinese"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_marginStart="@dimen/margin16dp"
+                            android:layout_marginEnd="@dimen/margin16dp"
+                            android:src="@drawable/ic_navigate_next_black_24dp"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentEnd="true"
+                            android:alpha="0.8"/>
+
+                    </RelativeLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cardviewAbout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin16dp"
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="5dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin16dp"
+                            android:layout_marginBottom="@dimen/margin16dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_marginStart="@dimen/margin16dp"
+                                android:layout_marginEnd="@dimen/margin32dp"
+                                android:layout_gravity="center_vertical"
+                                android:src="@drawable/ic_info_black_24dp"/>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_gravity="center_vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="5dp"
+                                    android:text="About"
+                                    android:textStyle="bold"
+                                    android:textSize="@dimen/textSizeLarge"
+                                    android:textColor="@color/blueGrey"
+                                    android:fontFamily="@font/droid_sans_chinese"
+                                    android:alpha="0.8"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Find out more about this app"
+                                    android:textColor="@color/textColorWhiteOpaque"
+                                    android:fontFamily="@font/droid_sans_chinese"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_marginStart="@dimen/margin16dp"
+                            android:layout_marginEnd="@dimen/margin16dp"
+                            android:src="@drawable/ic_navigate_next_black_24dp"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentEnd="true"
+                            android:alpha="0.8"/>
+
+                    </RelativeLayout>
+
+                </android.support.v7.widget.CardView>
 
             </LinearLayout>
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/main_rec"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin16dp"
-                android:layout_marginEnd="@dimen/margin16dp"
-                android:layout_marginBottom="@dimen/margin16dp"
-                android:layout_gravity="center"/>
 
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
 
-</android.support.constraint.ConstraintLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/ic_info_outline_black_24dp"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/colorAccent"/>
+
+</RelativeLayout>

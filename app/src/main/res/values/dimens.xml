@@ -33,5 +33,6 @@
     <dimen name="toolbar_double_height">200dp</dimen>
     <dimen name="cardview_toolbar_spacer">32dp</dimen>
     <dimen name="margin8dp">8dp</dimen>
+    <dimen name="textSizeLargex">20sp</dimen>
 
 </resources>

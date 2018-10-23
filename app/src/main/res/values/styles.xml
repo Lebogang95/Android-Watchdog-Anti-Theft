@@ -23,7 +23,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:textColorHint">@color/textColorWhite</item>
+        <item name="android:textColorHint">@color/colorPrimary</item>
         <item name="android:fitsSystemWindows">false</item>
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
     </style>
@@ -32,7 +32,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/blackOpaque</item>
+        <item name="colorAccent">@color/blueGrey</item>
         <item name="android:textColorHint">@color/textColorWhite</item>
     </style>
 

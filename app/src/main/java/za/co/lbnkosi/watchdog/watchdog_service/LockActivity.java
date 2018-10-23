@@ -1,6 +1,7 @@
 package za.co.lbnkosi.watchdog.watchdog_service;
 
 import android.annotation.TargetApi;
+import android.app.ActivityManager;
 import android.app.admin.DevicePolicyManager;
 import android.content.ComponentName;
 import android.content.Context;
@@ -8,6 +9,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -72,7 +74,7 @@ public class LockActivity extends AppCompatActivity {
         }
     }
 
-    /*@Override
+    @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             //preventing default implementation previous to android.os.Build.VERSION_CODES.ECLAIR
@@ -93,7 +95,7 @@ public class LockActivity extends AppCompatActivity {
                 .getSystemService(Context.ACTIVITY_SERVICE);
 
         activityManager.moveTaskToFront(getTaskId(), 0);
-    }*/
+    }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void enableKioskMode(boolean enabled) {

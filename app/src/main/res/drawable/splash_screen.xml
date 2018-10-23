@@ -7,9 +7,11 @@
         />
 
     <item>
+
         <bitmap
             android:gravity="center"
             android:src="@mipmap/ic_launcher_foreground" />
+
     </item>
 
 </layer-list>

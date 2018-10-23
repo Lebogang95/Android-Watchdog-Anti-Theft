@@ -46,7 +46,7 @@ public class ImageAdapter extends BaseAdapter {
 
             if (mobile.equals("Account")) {
                 imageView.setImageResource(R.drawable.accounticon);
-            } else if (mobile.equals("Configure")) {
+            } else if (mobile.equals("ConfigureActivity")) {
                 imageView.setImageResource(R.drawable.settingsicon);
             } else if (mobile.equals("Donate")) {
                 imageView.setImageResource(R.drawable.donateicon);

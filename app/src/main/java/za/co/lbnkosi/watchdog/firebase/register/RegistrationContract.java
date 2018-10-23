@@ -13,15 +13,15 @@ public interface RegistrationContract {
     }
 
     interface Presenter{
-        void register(Activity activity, String email, String password, String confirmPassword, String name, String surname, String id, String bankAccount, String branchCode, String bankName, String phoneNumber);
+        void register(Activity activity, String email, String password, String confirmPassword, String name, String surname, String phoneNumber);
     }
 
     interface Intractor{
         void performFirebaseRegistration(Activity activity, String email, String password);
 
-        void validateCredentials(Activity activity, String email, String password, String confirmPassword, String name, String surname, String id, String bankAccount, String branchCode, String bankName, String phoneNumber);
+        void validateCredentials(Activity activity, String email, String password, String confirmPassword, String name, String surname, String phoneNumber);
 
-        void storeCredentials(final Activity activity, final String email, final String password, String name, String surname, String id, String phoneNumber);
+        void storeCredentials(final Activity activity, final String email, final String password, String name, String surname, String phoneNumber);
     }
 
     interface onRegistrationListener{

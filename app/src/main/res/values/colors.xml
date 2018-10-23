@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#45c499</color>
-    <color name="colorPrimaryDark">#0288d1</color>
-    <color name="colorAccent">#0288d1</color>
+    <color name="colorPrimary">#0091ea</color>
+    <color name="colorPrimaryDark">#0091ea</color>
+    <color name="colorAccent">#0091ea</color>
 
-    <color name="statusBarColor">#56c6a9</color>
+    <color name="backgroundColor">#f2f2f2</color>
+
+    <color name="statusBarColor">#6200ea</color>
     <color name="statusBarColor2">#4ec5a1</color>
     <color name="stat">#45c499</color>
 
     <color name="logoColorDark">#609bcd</color>
     <color name="logoColorLight">#95caf6</color>
 
+    <string-array name="devlight">
+        <item>#ffa50a</item>
+        <item>#e08e00</item>
+        <item>#b87400</item>
+        <item>#8f5a00</item>
+    </string-array>
+
     <color name="textColorBlueDark">#0098cb</color>
     <color name="textColorWhite">#ffffff</color>
-    <color name="textColorWhiteOpaque">#76ffffff</color>
+    <color name="textColorWhiteOpaque">#bdbdbd</color>
     <color name="textColorWhiteOpaque2">#51ffffff</color>
     <color name="textColorBlackOpaque">#cf000000</color>
-    <color name="blackOpaque">#47000000</color>
+    <color name="blueGrey">#263238</color>
     <color name="blackOpaque2">#b3000000</color>
 
     <color name="custard">#fff0e8</color>

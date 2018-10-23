@@ -40,7 +40,7 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         android:theme="@style/NavigationView"
-        android:background="@color/blackOpaque"
+        android:background="@color/blueGrey"
         app:itemTextColor="@color/textColorWhite"
         app:itemIconTint="@color/textColorWhite"
         app:headerLayout="@layout/nav_header_main"

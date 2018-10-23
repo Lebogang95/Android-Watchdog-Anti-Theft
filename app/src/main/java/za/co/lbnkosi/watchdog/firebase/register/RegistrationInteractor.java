@@ -1,18 +1,9 @@
 package za.co.lbnkosi.watchdog.firebase.register;
 
 import android.app.Activity;
-import android.support.annotation.NonNull;
 import android.util.Log;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.security.GeneralSecurityException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,9 +21,9 @@ public class RegistrationInteractor implements RegistrationContract.Intractor {
     }
 
     @Override
-    public void validateCredentials(Activity activity, String email, String password, String confirmPassword, String name, String surname, String id, String bankAccount, String branchCode, String bankName, String phoneNumber){
+    public void validateCredentials(Activity activity, String email, String password, String confirmPassword, String name, String surname, String phoneNumber){
 
-        if (name.equals("") || surname.equals("") || email.equals("") || password.equals("") || confirmPassword.equals("") || id.equals("") || bankAccount.equals("") || branchCode.equals("") || bankName.equals("") || phoneNumber.equals("")) {
+        if (name.equals("") || surname.equals("") || email.equals("") || password.equals("") || confirmPassword.equals("")|| phoneNumber.equals("")) {
             mOnRegistrationListener.onFailure("Please Fill In The Empty Fields");
             return;
         }
@@ -58,139 +49,183 @@ public class RegistrationInteractor implements RegistrationContract.Intractor {
             return;
         }
 
-        // ID validations
-        if (id.length()<13){
-            mOnRegistrationListener.onFailure("ID is too short");
-            return;
-        }
-
-        storeCredentials(activity,email,password,name,surname,id,phoneNumber);
+        storeCredentials(activity,email,password,name,surname,phoneNumber);
 
     }
 
     @Override
-    public void storeCredentials(final Activity activity, final String email, final String password, String name, String surname, String id, String phoneNumber){
+    public void storeCredentials(final Activity activity, final String email, final String password, String name, String surname, String phoneNumber){
 
         final FirebaseFirestore db = FirebaseFirestore.getInstance();
         Map<String, Object> credentials = new HashMap<>();
         credentials.put("name", name);
         credentials.put("surname", surname);
         credentials.put("email", email);
-        credentials.put("id", "7");
         credentials.put("phoneNumber", phoneNumber);
 
-        db.collection("Users").document(email)
+        db.collection("users").document(email)
                 .set(credentials)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d("", "DocumentSnapshot successfully written!");
-                        performFirebaseRegistration(activity,email,password);
-                    }
+                .addOnSuccessListener(aVoid -> {
+                    Log.d("", "DocumentSnapshot successfully written!");
+                    performFirebaseRegistration(activity,email,password);
                 })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w("", "Error writing document", e);
-                    }
-                });
+                .addOnFailureListener(e -> Log.w("", "Error writing document", e));
 
-        final FirebaseFirestore db2 = FirebaseFirestore.getInstance();
-        Map<String, Object> stats = new HashMap<>();
-        stats.put("availablePoints", "0");
-        stats.put("totalPoints", "0");
-        stats.put("usedPoints", "0");
+        writeDeviceDetails(email);
+        writeNetworkSettings(email);
+        writeSecuritySettings(email);
+        writeSimDetails(email);
+        writeSocialSettings(email);
+        createTrustedFriendsCollection(email);
+        createDevicesCollection(email);
+        createFamilyLinkCollection(email);
 
-        db2.collection("Stats").document(email).collection("user_stats").document("new_stats")
-                .set(stats)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d("", "DocumentSnapshot successfully written!");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w("", "Error writing document", e);
-                    }
-                });
-
-        final FirebaseFirestore db3 = FirebaseFirestore.getInstance();
-        Map<String, Object> stats1 = new HashMap<>();
-        stats1.put("availablePoints", "0");
-        stats1.put("totalPoints", "0");
-        stats1.put("usedPoints", "0");
-
-        db3.collection("Stats").document(email).collection("user_stats").document("cached")
-                .set(stats1)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d("", "DocumentSnapshot successfully written!");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w("", "Error writing document", e);
-                    }
-                });
-
-        final FirebaseFirestore db4 = FirebaseFirestore.getInstance();
-        Map<String, Object> stats2 = new HashMap<>();
-        stats2.put("fingerprint_unlock", "false");
-        stats2.put("require_authentication", "false");
-
-        db4.collection("userdata").document("preferences").collection(email).document("security")
-                .set(stats2)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d("", "DocumentSnapshot successfully written!");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w("", "Error writing document", e);
-                    }
-                });
-
-        final FirebaseFirestore db5 = FirebaseFirestore.getInstance();
-        Map<String, Object> stats3 = new HashMap<>();
-        stats3.put("push_notifications", "false");
-
-        db5.collection("userdata").document("preferences").collection(email).document("notification")
-                .set(stats3)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d("", "DocumentSnapshot successfully written!");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w("", "Error writing document", e);
-                    }
-                });
     }
 
     @Override
     public void performFirebaseRegistration(Activity activity, String email, String password) {
         FirebaseAuth.getInstance()
                 .createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(!task.isSuccessful()){
-                            mOnRegistrationListener.onFailure(task.getException().getMessage());
-                        }else{
-                            mOnRegistrationListener.onSuccess("");
-                        }
+                .addOnCompleteListener(task -> {
+                    if(!task.isSuccessful()){
+                        mOnRegistrationListener.onFailure(task.getException().getMessage());
+                    }else{
+                        mOnRegistrationListener.onSuccess("");
                     }
                 });
+    }
+
+    private void writeDeviceDetails(String email){
+
+        String serial_number = "1",
+                imei_number = "1",
+                build_number = "1",
+                model = "1",
+                android_version = "1",
+                android_version_code = "1",
+                device_name = "1";
+
+
+        final FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Map<String, Object> stats = new HashMap<>();
+        stats.put("serial_number", serial_number);
+        stats.put("imei_number", imei_number);
+        stats.put("build_number",build_number);
+        stats.put("model",model);
+        stats.put("android_version",android_version);
+        stats.put("android_version_code",android_version_code);
+        stats.put("device_name",device_name);
+
+        db.collection("user_settings").document(email).collection("settings").document("device_details")
+                .set(stats)
+                .addOnSuccessListener(aVoid -> Log.d("", "DocumentSnapshot successfully written!"))
+                .addOnFailureListener(e -> Log.w("", "Error writing document", e));
+    }
+
+    private void writeNetworkSettings(String email){
+        final FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Map<String, Object> stats = new HashMap<>();
+        stats.put("detect_wifi_networks", "true");
+
+        db.collection("user_settings").document(email).collection("settings").document("network_settings")
+                .set(stats)
+                .addOnSuccessListener(aVoid -> Log.d("", "DocumentSnapshot successfully written!"))
+                .addOnFailureListener(e -> Log.w("", "Error writing document", e));
+    }
+
+    private void writeSecuritySettings(String email){
+        final FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Map<String, Object> stats = new HashMap<>();
+        stats.put("backup_pin", "0000");
+        stats.put("fingerprint_unlock", "no");
+        stats.put("keep_me_signed_in", "no");
+        stats.put("pin", "0000");
+        stats.put("travel_mode", "enabled");
+
+        db.collection("user_settings").document(email).collection("settings").document("security_settings")
+                .set(stats)
+                .addOnSuccessListener(aVoid -> Log.d("", "DocumentSnapshot successfully written!"))
+                .addOnFailureListener(e -> Log.w("", "Error writing document", e));
+    }
+
+    private void writeSocialSettings(String email){
+        final FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Map<String, Object> stats = new HashMap<>();
+        stats.put("friend_link", "disabled");
+        stats.put("trusted_friends", "disabled");
+        stats.put("family_tracking","true");
+
+        db.collection("user_settings").document(email).collection("settings").document("social_settings")
+                .set(stats)
+                .addOnSuccessListener(aVoid -> Log.d("", "DocumentSnapshot successfully written!"))
+                .addOnFailureListener(e -> Log.w("", "Error writing document", e));
+    }
+
+    private void writeSimDetails(String email){
+        String imei_number = "1234";
+        String phone_number = "1234567890";
+
+        final FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Map<String, Object> stats = new HashMap<>();
+        stats.put("imei_number", imei_number);
+        stats.put("phone_number", phone_number);
+
+        db.collection("user_settings").document(email).collection("settings").document("sim_details")
+                .set(stats)
+                .addOnSuccessListener(aVoid -> Log.d("", "DocumentSnapshot successfully written!"))
+                .addOnFailureListener(e -> Log.w("", "Error writing document", e));
+    }
+
+    private void createTrustedFriendsCollection(String email){
+        final FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Map<String, Object> stats = new HashMap<>();
+        stats.put("email", "demo");
+        stats.put("phone_number", "demo");
+        stats.put("name", "demo");
+
+        db.collection("trusted_friends").document(email).collection("demo1").document("friend_details")
+                .set(stats)
+                .addOnSuccessListener(aVoid -> Log.d("", "DocumentSnapshot successfully written!"))
+                .addOnFailureListener(e -> Log.w("", "Error writing document", e));
+    }
+
+    private void createFamilyLinkCollection(String email){
+        final FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Map<String, Object> stats = new HashMap<>();
+        stats.put("email", "demo");
+        stats.put("phone_number", "demo");
+        stats.put("name", "demo");
+
+        db.collection("devices").document(email).collection("family_link").document("demo1")
+                .set(stats)
+                .addOnSuccessListener(aVoid -> Log.d("", "DocumentSnapshot successfully written!"))
+                .addOnFailureListener(e -> Log.w("", "Error writing document", e));
+    }
+
+    private void createDevicesCollection(String email){
+        final FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Map<String, Object> stats = new HashMap<>();
+        stats.put("email", "demo");
+        stats.put("phone_number", "demo");
+        stats.put("name", "demo");
+
+        db.collection("devices").document(email).collection("devices").document("demo1")
+                .set(stats)
+                .addOnSuccessListener(aVoid -> Log.d("", "DocumentSnapshot successfully written!"))
+                .addOnFailureListener(e -> Log.w("", "Error writing document", e));
+    }
+
+    private void createTrackingCollection(String email){
+        final FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Map<String, Object> stats = new HashMap<>();
+        stats.put("email", "demo");
+        stats.put("phone_number", "demo");
+        stats.put("name", "demo");
+
+        db.collection("tracking").document(email).collection("lebo@applord").document("details")
+                .set(stats)
+                .addOnSuccessListener(aVoid -> Log.d("", "DocumentSnapshot successfully written!"))
+                .addOnFailureListener(e -> Log.w("", "Error writing document", e));
     }
 
 }

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -13,6 +14,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.yqritc.scalablevideoview.ScalableType;
+import com.yqritc.scalablevideoview.ScalableVideoView;
+
+import java.io.IOException;
 
 import za.co.lbnkosi.watchdog.R;
 import za.co.lbnkosi.watchdog.firebase.register.RegistrationContract;
@@ -25,10 +30,8 @@ public class RegisterActivity extends RegisterBaseActivity implements  Registrat
 
     private RegistrationPresenter mRegisterPresenter;
 
-    private String name,surname,email,password,confirm_password,phone_number, id, bank_account,branch_code,bank_name;
-    private EditText nameEditText, surnameEditText, emailEditText, passwordEditText, confirmPasswordEditText, numberEditText, idEditText,accountEditText,codeEditText, banknameEditText;
-    private FirebaseAuth mAuth;
-    private ImageView imageView;
+    private String name,surname,email,password,confirm_password,phone_number;
+    private EditText nameEditText, surnameEditText, emailEditText, passwordEditText, confirmPasswordEditText, numberEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -39,46 +42,31 @@ public class RegisterActivity extends RegisterBaseActivity implements  Registrat
 
         mRegisterPresenter = new RegistrationPresenter(this);
         Button button1 = findViewById(R.id.button_register);
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        button1.setOnClickListener(view -> {
 
-                nameEditText = findViewById(R.id.register_name);
-                surnameEditText = findViewById(R.id.register_surname);
-                emailEditText = findViewById(R.id.register_email);
-                passwordEditText = findViewById(R.id.register_password);
-                confirmPasswordEditText = findViewById(R.id.register_confirmpassword);
-                numberEditText = findViewById(R.id.register_number);
-                idEditText = findViewById(R.id.register_id);
-                accountEditText = findViewById(R.id.register_bankaccount);
-                codeEditText = findViewById(R.id.register_branchcode);
-                banknameEditText = findViewById(R.id.register_bankname);
+            nameEditText = findViewById(R.id.register_name);
+            surnameEditText = findViewById(R.id.register_surname);
+            emailEditText = findViewById(R.id.register_email);
+            passwordEditText = findViewById(R.id.register_password);
+            confirmPasswordEditText = findViewById(R.id.register_confirmpassword);
+            numberEditText = findViewById(R.id.register_number);
 
-                name = nameEditText.getText().toString();
-                surname = surnameEditText.getText().toString();
-                email = emailEditText.getText().toString();
-                password = passwordEditText.getText().toString();
-                confirm_password = confirmPasswordEditText.getText().toString();
-                phone_number = numberEditText.getText().toString();
-                id = idEditText.getText().toString();
-                bank_account = accountEditText.getText().toString();
-                branch_code = codeEditText.getText().toString();
-                bank_name = banknameEditText.getText().toString();
 
-                showLoadingScreen();
-                initRegistration(name,surname,email,password,confirm_password,phone_number,id,bank_name,branch_code,bank_account);
-            }
+            name = nameEditText.getText().toString();
+            surname = surnameEditText.getText().toString();
+            email = emailEditText.getText().toString();
+            password = passwordEditText.getText().toString();
+            confirm_password = confirmPasswordEditText.getText().toString();
+            phone_number = numberEditText.getText().toString();
+
+
+            showLoadingScreen();
+            initRegistration(name,surname,email,password,confirm_password,phone_number);
         });
 
-        imageView = findViewById(R.id.imageView1);
-        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.background18);
-        Bitmap blurredBitmap = BlurBack.blur( this, bm );
-        imageView.setImageBitmap(blurredBitmap);
 
         final EditText editTextCP = findViewById(R.id.register_confirmpassword);
         final EditText editTextEmail = findViewById(R.id.register_email);
-        final EditText editTextNumber = findViewById(R.id.register_number);
-        final EditText editTextID = findViewById(R.id.register_id);
 
         editTextCP.addTextChangedListener(new TextWatcher() {
             @Override
@@ -155,12 +143,8 @@ public class RegisterActivity extends RegisterBaseActivity implements  Registrat
         finish();
     }
 
-    private void validation (){
-
-    }
-
-    private void initRegistration(String name, String surname,String email, String password, String confirmPassword, String phonenumber, String id, String bankname, String branchCode, String bankaccount) {
-        mRegisterPresenter.register(this, email, password, confirmPassword, name, surname, id, bankaccount, branchCode, bankname, phonenumber);
+    private void initRegistration(String name, String surname,String email, String password, String confirmPassword, String phonenumber) {
+        mRegisterPresenter.register(this, email, password, confirmPassword, name, surname, phonenumber);
     }
 
 

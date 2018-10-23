@@ -16,8 +16,8 @@ public class RegistrationPresenter implements RegistrationContract.Presenter, Re
     }
 
     @Override
-    public void register(Activity activity, String email, String password, String confirmPassword, String name, String surname, String id, String bankAccount, String branchCode, String bankName, String phoneNumber) {
-        mRegistrationInteractor.validateCredentials(activity, email, password, confirmPassword, name, surname, id, bankAccount, branchCode, bankName, phoneNumber);
+    public void register(Activity activity, String email, String password, String confirmPassword, String name, String surname,String phoneNumber) {
+        mRegistrationInteractor.validateCredentials(activity, email, password, confirmPassword, name, surname, phoneNumber);
     }
 
     @Override

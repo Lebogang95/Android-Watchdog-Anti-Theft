@@ -6,19 +6,26 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.RectF;
+import android.media.MediaPlayer;
 import android.media.ThumbnailUtils;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.storage.StorageReference;
+import com.yqritc.scalablevideoview.ScalableType;
+import com.yqritc.scalablevideoview.ScalableVideoView;
+
+import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -40,10 +47,6 @@ public class LoginActivity extends LoginBaseActivity implements LoginContract.Vi
     private LoginPresenter mLoginPresenter;
     private FirebaseAuth mAuth;
     private Button buttonSignin, buttonRegister, buttonForgotPassword;
-    private int BLUR_PRECENTAGE = 100;
-    private String IMAGE_URL = "http://behemppy.com/hotelshivasdream.com/astrokathmandu/api/users/system.jpg";
-    private StorageReference fileRef;
-    private Bitmap bitmap;
     private TextView textViewRegister;
 
     @BindView(R.id.login_emailedit) EditText signInEmail;
@@ -76,12 +79,6 @@ public class LoginActivity extends LoginBaseActivity implements LoginContract.Vi
         buttonRegister.setOnClickListener(this);
         buttonForgotPassword.setOnClickListener(this);
         textViewRegister.setOnClickListener(this);
-
-        ImageView imageView = findViewById(R.id.imageView1);
-        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.background5);
-        Bitmap blurredBitmap = BlurBack.blur( this, bm );
-        //imageView.setBackgroundDrawable( new BitmapDrawable( getResources(), blurredBitmap ) );
-        imageView.setImageBitmap(blurredBitmap);
 
     }
 
@@ -159,44 +156,6 @@ public class LoginActivity extends LoginBaseActivity implements LoginContract.Vi
             startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
             finish();
         }
-    }
-
-    public static Bitmap cropCenter(Bitmap bmp) {
-        int dimension = Math.min(bmp.getWidth(), bmp.getHeight());
-        return ThumbnailUtils.extractThumbnail(bmp, dimension, dimension);
-    }
-
-    public Bitmap scaleCenterCrop(Bitmap source, int newHeight, int newWidth) {
-        int sourceWidth = source.getWidth();
-        int sourceHeight = source.getHeight();
-
-        // Compute the scaling factors to fit the new height and width, respectively.
-        // To cover the final image, the final scaling will be the bigger
-        // of these two.
-        float xScale = (float) newWidth / sourceWidth;
-        float yScale = (float) newHeight / sourceHeight;
-        float scale = Math.max(xScale, yScale);
-
-        // Now get the size of the source bitmap when scaled
-        float scaledWidth = scale * sourceWidth;
-        float scaledHeight = scale * sourceHeight;
-
-        // Let's find out the upper left coordinates if the scaled bitmap
-        // should be centered in the new size give by the parameters
-        float left = (newWidth - scaledWidth) / 2;
-        float top = (newHeight - scaledHeight) / 2;
-
-        // The target rectangle for the new, scaled version of the source bitmap will now
-        // be
-        RectF targetRect = new RectF(left, top, left + scaledWidth, top + scaledHeight);
-
-        // Finally, we create a new bitmap of the specified size and draw our new,
-        // scaled bitmap onto it.
-        Bitmap dest = Bitmap.createBitmap(newWidth, newHeight, source.getConfig());
-        Canvas canvas = new Canvas(dest);
-        canvas.drawBitmap(source, null, targetRect, null);
-
-        return dest;
     }
 
     private boolean isOnline() {

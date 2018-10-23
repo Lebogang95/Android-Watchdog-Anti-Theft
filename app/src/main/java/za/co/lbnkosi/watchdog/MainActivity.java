@@ -1,56 +1,28 @@
 package za.co.lbnkosi.watchdog;
 
-import android.app.NotificationManager;
-import android.app.admin.DevicePolicyManager;
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.NotificationCompat;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.vikramezhil.droidspeech.DroidSpeech;
-import com.vikramezhil.droidspeech.OnDSListener;
-import com.vikramezhil.droidspeech.OnDSPermissionsListener;
+import com.getkeepsafe.taptargetview.TapTarget;
+import com.getkeepsafe.taptargetview.TapTargetView;
+import com.google.firebase.auth.FirebaseAuth;
 
-import java.util.ArrayList;
-import java.util.List;
+import fr.castorflex.android.smoothprogressbar.SmoothProgressBar;
 import za.co.lbnkosi.watchdog.ui.base.BaseActivity;
-import za.co.lbnkosi.watchdog.utils.Adapter1;
-import za.co.lbnkosi.watchdog.utils.Constants;
-import za.co.lbnkosi.watchdog.utils.DemoDeviceAdminReceiver;
-import za.co.lbnkosi.watchdog.utils.Model1;
-import za.co.lbnkosi.watchdog.utils.RecyclerItemClickListener;
-import za.co.lbnkosi.watchdog.watchdog_service.BackgroundService;
-import za.co.lbnkosi.watchdog.watchdog_service.ForegroundService;
-import za.co.lbnkosi.watchdog.watchdog_service.LockActivity;
+import za.co.lbnkosi.watchdog.ui.logind.LoginActivity;
+import za.co.lbnkosi.watchdog.ui.navigationBar.AboutActivity;
+import za.co.lbnkosi.watchdog.ui.navigationBar.AccountActivity;
+import za.co.lbnkosi.watchdog.ui.navigationBar.ConfigureActivity;
+import za.co.lbnkosi.watchdog.ui.navigationBar.SettingsActivity;
 
-public class MainActivity extends BaseActivity implements OnDSListener, OnDSPermissionsListener {
-
-    String[] main_header1 = {"Account","Configure","Donate","Settings"};
-    String[] middle_header1 = {"Manage your account","Make changes to Watchdog","Buy the developer coffee","Manage app settings"};
-
-    final int[] banner_images1 = {
-            R.drawable.accounticon
-            ,R.drawable.configureicon
-            ,R.drawable.donateicon
-            ,R.drawable.settingsicon
-    };
-
-    private NotificationManager mNotificationManager;
-    private NotificationCompat.Builder mBuilder;
-    public static final String NOTIFICATION_CHANNEL_ID = "10001";
-
-    DroidSpeech droidSpeech;
-    DevicePolicyManager devicePolicyManager;
+public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,44 +30,86 @@ public class MainActivity extends BaseActivity implements OnDSListener, OnDSPerm
         setContentView(R.layout.activity_main);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setStatusBarColor(getResources().getColor(R.color.statusBarColor));
+//            getWindow().setStatusBarColor(getResources().getColor(R.color.statusBarColor));
+            getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimary));
         }
 
-        final Toolbar mToolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(mToolbar);
+        FloatingActionButton floatingActionButton = findViewById(R.id.fab);
+        floatingActionButton.setOnClickListener(v->{
+            FirebaseAuth.getInstance().signOut();
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            finish();
+        });
 
-        RecyclerView mRecyclerView1 = findViewById(R.id.main_rec);
+        ImageView imageView = findViewById(R.id.infoicon);
+        imageView.setOnClickListener(v->{
+            TapTargetView.showFor(this,                 // `this` is an Activity
+                    TapTarget.forView(findViewById(R.id.cardviewAccount), "Hi there", "This is just the home screen. If you're finding it difficult to configure the app then just hit the configure button then help")
+                            // All options below are optional
+                            .outerCircleColor(R.color.colorPrimary)      // Specify a color for the outer circle
+                            .outerCircleAlpha(0.96f)            // Specify the alpha amount for the outer circle
+                            .targetCircleColor(R.color.white)   // Specify a color for the target circle
+                            .titleTextSize(20)                  // Specify the size (in sp) of the title text
+                            .titleTextColor(R.color.white)      // Specify the color of the title text
+                            .descriptionTextSize(10)            // Specify the size (in sp) of the description text
+                            .descriptionTextColor(R.color.colorAccent)  // Specify the color of the description text
+                            .textColor(R.color.textColorWhite)            // Specify a color for both the title and description text
+                            .textTypeface(Typeface.SANS_SERIF)  // Specify a typeface for the text
+                            .dimColor(R.color.blueGrey)            // If set, will dim behind the view with 30% opacity of the given color
+                            .drawShadow(true)                   // Whether to draw a drop shadow or not
+                            .cancelable(false)                  // Whether tapping outside the outer circle dismisses the view
+                            .tintTarget(true)                   // Whether to tint the target view's color
+                            .transparentTarget(false)           // Specify whether the target is transparent (displays the content underneath)// Specify a custom drawable to draw as the target
+                            .targetRadius(60),                  // Specify the target radius (in dp)
+                    new TapTargetView.Listener() {          // The listener can listen for regular clicks, long clicks or cancels
+                        @Override
+                        public void onTargetClick(TapTargetView view) {
+                            super.onTargetClick(view);      // This call is optional
 
-        if (mRecyclerView1 != null) {
-            mRecyclerView1.setHasFixedSize(true);}
+                        }
+                    });
+        });
 
-        RecyclerView.LayoutManager mLayoutManager1 = new GridLayoutManager(this,2);
-        assert mRecyclerView1 != null;
-        mRecyclerView1.setLayoutManager(mLayoutManager1);
-        List<Model1> itemList1 = new ArrayList<>();
+        SmoothProgressBar smoothProgressBar = findViewById(R.id.progress_bar);
 
-        for (int i = 0; i < main_header1.length; i++) {
-            Model1 model1 = new Model1(main_header1[i], middle_header1[i], banner_images1[i]);
-            itemList1.add(model1);}
+        CardView cardAccount = findViewById(R.id.cardviewAccount);
+        cardAccount.setOnClickListener(v->{
+            smoothProgressBar.setVisibility(View.VISIBLE);
+            startActivity(new Intent(MainActivity.this, AccountActivity.class));
+            overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+            finish();
+        });
 
-        Adapter1 itemAdapter5 = new Adapter1(itemList1);
-        mRecyclerView1.setAdapter(itemAdapter5);
-        itemAdapter5.notifyDataSetChanged();
+        CardView cardConfigure = findViewById(R.id.cardviewConfigure);
+        cardConfigure.setOnClickListener(v->{
+            smoothProgressBar.setVisibility(View.VISIBLE);
+            startActivity(new Intent(MainActivity.this, ConfigureActivity.class));
+            overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+            finish();
+        });
 
-        mRecyclerView1.addOnItemTouchListener(new RecyclerItemClickListener(this, (view1, position) -> Toast.makeText(getApplicationContext(), "Card at " + position + " is clicked", Toast.LENGTH_SHORT).show()));
+        CardView cardSettings = findViewById(R.id.cardviewSettings);
+        cardSettings.setOnClickListener(v->{
+            smoothProgressBar.setVisibility(View.VISIBLE);
+            startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+            overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+            finish();
+        });
 
+        CardView cardDonate = findViewById(R.id.cardviewDonate);
+        cardDonate.setOnClickListener(v->{
+            smoothProgressBar.setVisibility(View.VISIBLE);
+            startActivity(new Intent(MainActivity.this, AccountActivity.class));
+            overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+            finish();
+        });
 
-        droidSpeech = new DroidSpeech(this, null);
-        droidSpeech.setOnDroidSpeechListener(this);
-
-        Button button = findViewById(R.id.appbar_button);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                /*Intent startIntent = new Intent(getApplicationContext(), ForegroundService.class);
-                startIntent.setAction(Constants.ACTION.ACTION_START_SERVICE);
-                startService(startIntent);*/
-                startActivity(new Intent(MainActivity.this, LockActivity.class));
-            }
+        CardView cardAbout = findViewById(R.id.cardviewAbout);
+        cardAbout.setOnClickListener(v->{
+            smoothProgressBar.setVisibility(View.VISIBLE);
+            startActivity(new Intent(MainActivity.this, AboutActivity.class));
+            overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+            finish();
         });
 
     }
@@ -111,46 +125,7 @@ public class MainActivity extends BaseActivity implements OnDSListener, OnDSPerm
     }
 
     @Override
-    public void onDroidSpeechSupportedLanguages(String currentSpeechLanguage, List<String> supportedSpeechLanguages) {
-
-    }
-
-    @Override
-    public void onDroidSpeechRmsChanged(float rmsChangedValue) {
-
-    }
-
-    @Override
-    public void onDroidSpeechLiveResult(String liveSpeechResult) {
-
-    }
-
-    @Override
-    public void onDroidSpeechFinalResult(String finalSpeechResult) {
-        TextView textView = findViewById(R.id.status);
-
-        if (finalSpeechResult.equals("activate")){
-            textView.setText(finalSpeechResult);
-        }
-
-        if (finalSpeechResult.equals("hey")){
-            textView.setText(finalSpeechResult);
-        }
-
-    }
-
-    @Override
-    public void onDroidSpeechClosedByUser() {
-
-    }
-
-    @Override
-    public void onDroidSpeechError(String errorMsg) {
-
-    }
-
-    @Override
-    public void onDroidSpeechAudioPermissionStatus(boolean audioPermissionGiven, String errorMsgIfAny) {
-
+    public void onBackPressed() {
+        finish();
     }
 }

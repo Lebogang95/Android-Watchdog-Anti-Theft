@@ -28,7 +28,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.Objects;
 
 import za.co.lbnkosi.watchdog.MainActivity;
-import za.co.lbnkosi.watchdog.ui.introslider.WelcomeActivity;
 import za.co.lbnkosi.watchdog.ui.logind.LoginActivity;
 import za.co.lbnkosi.watchdog.ui.verification.VerificationActivity;
 import za.co.lbnkosi.watchdog.utils.FingerprintActivity;
@@ -54,7 +53,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
             // Checks if there isn't a user registered to use the app
             if (currentUser == null){
-                startActivity(new Intent(SplashScreenActivity.this, WelcomeActivity.class));
+                startActivity(new Intent(SplashScreenActivity.this, LoginActivity .class));
                 finish();
             }
             else {

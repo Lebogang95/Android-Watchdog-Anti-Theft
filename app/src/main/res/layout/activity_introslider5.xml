@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/frameLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/materialbackground3"
+                android:scaleType="centerCrop"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/black"
+                android:alpha="0.1"
+                android:visibility="gone"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/gradient_bg"
+                android:visibility="gone">
+            </FrameLayout>
+
+        </FrameLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"
+            android:alpha="0.8"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"
+            android:layout_marginBottom="-400dp"
+            android:alpha="0.5"
+            android:rotation="80"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonsLayout"
+        android:layout_marginStart="@dimen/margin16dp"
+        android:layout_marginEnd="@dimen/margin16dp"
+        android:layout_marginBottom="@dimen/margin32dp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:layout_marginBottom="@dimen/margin8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="64dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/appName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="64dp"
+                    android:text="W  A  T  C  H  D  O  G"
+                    android:textSize="@dimen/textSizeLargex"
+                    android:textColor="@color/textColorWhite"
+                    android:fontFamily="@font/droid_sans_chinese"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:id="@+id/appNameBanner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Notification Access Permission"
+                    android:textSize="@dimen/textSizeMedium"
+                    android:textColor="@color/textColorWhite"
+                    android:fontFamily="@font/droid_sans_chinese"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Traditional background services are usually killed by Android a while after the main application has been closed. This is not good for Watchdog as it uses those background services to run Watchdog Voice Recognition."
+                    android:textSize="@dimen/textSizeMedium"
+                    android:textColor="@color/textColorWhite"
+                    android:fontFamily="@font/droid_sans_chinese"
+                    android:gravity="center"/>
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="To counter that effect Watchdog makes use of the Notification Access service. Notification access is a long running background service which is used by Watchdog to run it's voice reocgnition service. This service has been found not to be terminated by Android an thus serves as workaround for the problem Watchdog faces"
+                    android:textSize="@dimen/textSizeMedium"
+                    android:textColor="@color/textColorWhite"
+                    android:fontFamily="@font/droid_sans_chinese"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Without this permission Watchdog cannot function and will remain disabled for the time that this permission has not been granted. To grant permission to this services please click on the button below."
+                    android:textSize="@dimen/textSizeMedium"
+                    android:textColor="@color/textColorWhite"
+                    android:fontFamily="@font/droid_sans_chinese"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <Button
+            android:id="@+id/adminbutton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="@dimen/margin16dp"
+            android:text="Notification Access"
+            android:textColor="@color/textColorWhite"
+            android:fontFamily="@font/droid_sans_chinese"
+            android:background="@drawable/button_solid_blackopaque"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/buttonsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="@dimen/margin32dp"
+        android:layout_marginStart="@dimen/margin32dp"
+        android:layout_marginEnd="@dimen/margin32dp"
+        android:layout_alignParentBottom="true">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/blackdot"
+                android:alpha="0.5"
+                android:layout_centerInParent="true"
+                android:visibility="gone"/>
+
+            <ImageView
+                android:id="@+id/next_activity"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_navigate_next_black_24dp"
+                android:alpha="0.4"
+                android:layout_centerInParent="true"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/blackdot"
+                android:alpha="0.5"
+                android:layout_centerInParent="true"
+                android:visibility="gone"/>
+
+            <ImageView
+                android:id="@+id/previous_activity"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_navigate_before_black_24dp"
+                android:alpha="0.4"
+                android:layout_centerInParent="true"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

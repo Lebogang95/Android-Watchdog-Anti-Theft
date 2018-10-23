@@ -12,5 +12,6 @@
 
     <dimen name="editText">45dp</dimen>
     <dimen name="editTextSmall">35dp</dimen>
+    <dimen name="textSizeLargex">20sp</dimen>
 
 </resources>

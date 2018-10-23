@@ -4,35 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:showIn="@layout/activity_welcome">
+    tools:showIn="@layout/activity_welcome"
+    android:background="@color/colorPrimary">
 
-    <FrameLayout
-        android:id="@+id/frameLayout1"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imageView1"
+        <!--<FrameLayout
+            android:id="@+id/frameLayout1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/background18"
-            android:scaleType="centerCrop"/>
+            android:layout_height="match_parent">
 
-        <View
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/background14"
+                android:scaleType="centerCrop"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/black"
+                android:alpha="0.1"
+                android:visibility="gone"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/gradient_bg"
+                android:visibility="gone">
+            </FrameLayout>
+
+        </FrameLayout>-->
+
+        <com.yqritc.scalablevideoview.ScalableVideoView
+            android:id="@+id/video_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@android:color/black"
-            android:alpha="0.1"
-            android:visibility="gone"/>
+            android:layout_height="match_parent"/>
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/gradient_bg"
-            android:visibility="gone">
-        </FrameLayout>
-
-    </FrameLayout>
+    </RelativeLayout>
 
 
     <android.support.v4.view.ViewPager

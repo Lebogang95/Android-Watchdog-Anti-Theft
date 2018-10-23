@@ -35,7 +35,7 @@
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
                                       <entry key="backgroundColor" value="ffffff" />
-                                      <entry key="foregroundImage" value="C:\Users\nkosi\Documents\watchdog\app\src\main\res\drawable\ogicon.png" />
+                                      <entry key="foregroundImage" value="C:\Users\nkosi\Documents\watchdog\app\src\main\res\drawable\blacklogo.png" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -66,7 +66,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_power_settings_new_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_info_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -76,8 +76,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="ffffff" />
-                            <entry key="outputName" value="ic_power_settings_new_black_24dp" />
+                            <entry key="color" value="0091ea" />
+                            <entry key="outputName" value="ic_info_black_24dp" />
                             <entry key="sourceFile" value="C:\Users\nkosi" />
                           </map>
                         </option>
