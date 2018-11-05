@@ -48,7 +48,6 @@
         <activity android:name=".ui.logind.LoginActivity" android:label="" android:theme="@style/AppTheme2" />
         <activity android:name=".ui.verification.VerificationActivity" android:label="" android:theme="@style/AppTheme2" />
         <activity android:name=".ui.registration.RegisterActivity" android:label="" android:theme="@style/AppTheme2" />
-        <activity android:name=".ui.introslider.WelcomeActivity" android:label="" android:theme="@style/AppTheme2" />
         <activity android:name=".utils.FingerprintActivity" android:label="" android:theme="@style/AppTheme2" />
         <activity android:name=".ui.navigationBar.ConfigureActivity" android:label="" android:theme="@style/AppTheme2" />
         <activity android:name=".watchdog_service.LockActivity" android:label="" android:theme="@style/AppTheme2" />
@@ -60,11 +59,16 @@
         <activity android:name=".ui.navigationBar.SettingsActivity" android:label="" android:theme="@style/AppTheme2" />
         <activity android:name=".ui.navigationBar.AccountActivity" android:label="" android:theme="@style/AppTheme2" />
         <activity android:name=".ui.navigationBar.AboutActivity" android:label="" android:theme="@style/AppTheme2" />
+        <activity android:name=".ui.accountDir.UpdateAccountActivity" android:label="" android:theme="@style/AppTheme2" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".ui.accountDir.FamilyLinkActivity" android:label="" android:theme="@style/AppTheme2" />
+        <activity android:name=".ui.accountDir.familyLink.AddFamilyActivity" android:label="" android:theme="@style/AppTheme2" />
+        <activity android:name=".ui.accountDir.familyLink.ViewFamilyActivity" android:label="" android:theme="@style/AppTheme2"/>
+        <activity android:name=".ui.accountDir.familyLink.RemoveFamilyActivity" android:label="" android:theme="@style/AppTheme2"/>
+        <activity android:name=".ui.configreDir.DeviceDetails" />
 
         <service android:name=".watchdog_service.BackgroundService" />
         <service android:name=".watchdog_service.ForegroundService"
             android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
-
             <intent-filter>
                 <action android:name="android.service.notification.NotificationListenerService" />
             </intent-filter>

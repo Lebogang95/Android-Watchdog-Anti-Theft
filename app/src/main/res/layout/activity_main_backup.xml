@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/backgroundColor"
+    android:id="@+id/relativeLayout">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp">
+
+                <com.scwang.wave.MultiWaveHeader
+                    android:id="@+id/waveHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:scaleY="1"
+                    app:mwhVelocity="2"
+                    app:mwhProgress="1"
+                    app:mwhGradientAngle="90"
+                    app:mwhWaveHeight="30dp"
+                    app:mwhColorAlpha="0.30"
+                    app:mwhStartColor="@color/colorPrimary"
+                    app:mwhCloseColor="@color/colorPrimary"
+                    app:mwhWaves="MultiWave">
+
+                </com.scwang.wave.MultiWaveHeader>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:layout_centerHorizontal="true"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/profilePic"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/ic_add_circle_black_100dp"
+                        app:civ_border_color="@color/white"
+                        app:civ_border_width="2dp"/>
+
+                    <TextView
+                        android:id="@+id/nameTextview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin16dp"
+                        android:text="@string/nullstring"
+                        android:textColor="@color/textColorWhite"
+                        android:fontFamily="@font/droid_sans_chinese"
+                        android:textSize="@dimen/textSizeMedium"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin8dp"
+                            android:layout_marginEnd="5dp"
+                            android:text="@string/watchdog_is"
+                            android:textColor="@color/textColorWhite"
+                            android:fontFamily="@font/droid_sans_chinese"
+                            android:textSize="@dimen/textSizeMedium"/>
+
+                        <TextView
+                            android:id="@+id/statusTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin8dp"
+                            android:text="@string/nullstring"
+                            android:textColor="@color/successColor"
+                            android:fontFamily="@font/droid_sans_chinese"
+                            android:textSize="@dimen/textSizeMedium"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/infoicon"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="@dimen/margin16dp"
+                    android:layout_marginEnd="@dimen/margin16dp"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/ic_info_outline_black_24dp"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="64dp"
+                android:text="@string/dashboard"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/droid_sans_chinese"
+                android:textSize="@dimen/textSizeLarge"
+                android:gravity="center"/>
+
+            <View
+                android:layout_width="200dp"
+                android:layout_height="1px"
+                android:layout_marginTop="@dimen/margin16dp"
+                android:background="@color/textColorWhiteOpaque" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/testRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin32dp"
+                android:layout_marginStart="@dimen/margin16dp"
+                android:layout_marginEnd="@dimen/margin16dp"
+                android:divider="#00000000"/>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_exit_to_app_black_24dp"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/colorAccent"
+        tools:ignore="UnusedAttribute"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

@@ -1,8 +1,6 @@
 package za.co.lbnkosi.watchdog.ui.verification;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -23,7 +21,6 @@ import java.util.Objects;
 import za.co.lbnkosi.watchdog.MainActivity;
 import za.co.lbnkosi.watchdog.R;
 import za.co.lbnkosi.watchdog.ui.logind.LoginActivity;
-import za.co.lbnkosi.watchdog.utils.BlurBack;
 
 public class VerificationActivity extends VerificationBaseActivity {
 
@@ -71,13 +68,6 @@ public class VerificationActivity extends VerificationBaseActivity {
 
         EditText editText = findViewById(R.id.login_emailedit);
         editText.setText(firebaseUser);
-
-        imageView = findViewById(R.id.imageView1);
-        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.background18);
-        Bitmap blurredBitmap = BlurBack.blur( this, bm );
-        //imageView.setBackgroundDrawable( new BitmapDrawable( getResources(), blurredBitmap ) );
-        imageView.setImageBitmap(blurredBitmap);
-
     }
 
     private void sendVerification(){

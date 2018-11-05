@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/backgroundColor">
+
+    <!--<android.support.v4.widget.NestedScrollView
+        android:id="@+id/mainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:background="@color/colorPrimary"
+                    android:alpha="0.9"/>
+
+                <ImageView
+                    android:id="@+id/backicon"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="@dimen/margin16dp"
+                    android:layout_marginTop="@dimen/margin16dp"
+                    android:layout_marginEnd="@dimen/margin16dp"
+                    android:src="@drawable/ic_navigate_before_black_24dp"/>
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cardviewAccount"
+                android:layout_width="match_parent"
+                android:layout_marginStart="@dimen/margin16dp"
+                android:layout_marginEnd="@dimen/margin16dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="-50dp"
+                android:layout_marginBottom="@dimen/margin16dp"
+                app:cardElevation="0dp"
+                app:cardCornerRadius="5dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin16dp"
+                        android:layout_marginBottom="@dimen/margin16dp"
+                        android:orientation="horizontal"
+                        android:layout_centerInParent="true"
+                        android:gravity="center">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:text="Please Note"
+                                android:textStyle="bold"
+                                android:textSize="@dimen/textSizeLarge"
+                                android:textColor="@color/blueGrey"
+                                android:fontFamily="@font/droid_sans_chinese"
+                                android:gravity="center"
+                                android:alpha="0.8"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin16dp"
+                                android:layout_marginEnd="@dimen/margin16dp"
+                                android:gravity="center"
+                                android:text="Firebase caches values to the device. The details here are not read in real time"
+                                android:textColor="@color/textColorWhiteOpaque"
+                                android:fontFamily="@font/droid_sans_chinese"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_marginStart="@dimen/margin16dp"
+                android:layout_marginEnd="@dimen/margin16dp"
+                android:layout_height="wrap_content"
+                app:cardElevation="0dp"
+                app:cardCornerRadius="5dp">
+
+            <LinearLayout
+                android:id="@+id/registration_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin32dp"
+                android:layout_marginEnd="@dimen/margin32dp"
+                android:layout_marginBottom="@dimen/margin32dp"
+                android:orientation="vertical"
+                android:layout_centerInParent="true"
+                android:paddingTop="32dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Personal Details"
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="@font/droid_sans_chinese"
+                    android:layout_marginTop="@dimen/margin16dp"
+                    android:layout_marginBottom="@dimen/margin16dp"/>
+
+                <EditText
+                    android:id="@+id/register_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/editText"
+                    android:padding="10dp"
+                    android:inputType="textPersonName"
+                    android:layout_marginBottom="@dimen/margin16dp"
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="@font/droid_sans_chinese"
+                    android:background="@drawable/edittext_background2"
+                    android:hint="Name"/>
+
+                <EditText
+                    android:id="@+id/register_surname"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/editText"
+                    android:padding="10dp"
+                    android:inputType="textPersonName"
+                    android:layout_marginBottom="@dimen/margin16dp"
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="@font/droid_sans_chinese"
+                    android:background="@drawable/edittext_background2"
+                    android:hint="Surname"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Contact Details"
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="@font/droid_sans_chinese"
+                    android:layout_marginTop="@dimen/margin16dp"
+                    android:layout_marginBottom="@dimen/margin16dp"/>
+
+                <EditText
+                    android:id="@+id/register_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/editText"
+                    android:padding="10dp"
+                    android:inputType="number"
+                    android:layout_marginBottom="@dimen/margin16dp"
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="@font/droid_sans_chinese"
+                    android:background="@drawable/edittext_background2"
+                    android:hint="Phone Number"/>
+
+                <EditText
+                    android:id="@+id/register_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/editText"
+                    android:padding="10dp"
+                    android:inputType="textEmailAddress"
+                    android:layout_marginBottom="@dimen/margin16dp"
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="@font/droid_sans_chinese"
+                    android:background="@drawable/edittext_background2"
+                    android:hint="Email"
+                    android:enabled="true"/>
+
+                <Button
+                    android:id="@+id/button_update"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:text="Update"
+                    android:textColor="@color/textColorWhite"
+                    android:textSize="@dimen/textSizeSmall"
+                    android:fontFamily="@font/droid_sans_chinese"
+                    android:background="@drawable/button_solid_blue" />
+
+            </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+
+    <!--</android.support.v4.widget.NestedScrollView>-->
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
+
+</RelativeLayout>

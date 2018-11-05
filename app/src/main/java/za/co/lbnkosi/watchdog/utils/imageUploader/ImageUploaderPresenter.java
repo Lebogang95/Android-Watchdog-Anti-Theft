@@ -22,7 +22,6 @@ public class ImageUploaderPresenter implements ImageUploaderContract.Presenter, 
     @Override
     public void upload(Activity activity, String email, String password) {
         mUploadInteractor.performImageUpload(activity, email, password);
-
     }
 
     @Override
@@ -38,12 +37,10 @@ public class ImageUploaderPresenter implements ImageUploaderContract.Presenter, 
     @Override
     public void onSuccess(String message) {
         mUploadView.onUploadSuccess(message);
-
     }
 
     @Override
     public void onFailure(String message) {
         mUploadView.onUploadFailure(message);
-
     }
 }

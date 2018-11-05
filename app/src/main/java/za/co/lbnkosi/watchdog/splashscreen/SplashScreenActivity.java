@@ -106,7 +106,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             db.collection("userdata").document("preferences").collection(Objects.requireNonNull(user.getEmail())).document("security");
             }
 
-            @SuppressLint("NewApi") DocumentReference docRef = db.collection("userdata").document("preferences").collection(Objects.requireNonNull(mAuth.getCurrentUser().getEmail())).document("security");
+            @SuppressLint({"NewApi", "LocalSuppress"}) DocumentReference docRef = db.collection("userdata").document("preferences").collection(Objects.requireNonNull(mAuth.getCurrentUser().getEmail())).document("security");
             docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @SuppressLint("SetTextI18n")
                 @Override

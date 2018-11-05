@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#0091ea</color>
     <color name="colorAccent">#0091ea</color>
 
-    <color name="backgroundColor">#f2f2f2</color>
+    <color name="backgroundColor">#e8ecef</color>
 
     <color name="statusBarColor">#6200ea</color>
     <color name="statusBarColor2">#4ec5a1</color>
@@ -12,6 +12,9 @@
 
     <color name="logoColorDark">#609bcd</color>
     <color name="logoColorLight">#95caf6</color>
+
+    <color name="errorColor">#d50000</color>
+    <color name="successColor">#00c853</color>
 
     <string-array name="devlight">
         <item>#ffa50a</item>
@@ -42,6 +45,7 @@
     <color name="bluegraydarktransparent">#c4101b37</color>
     <color name="bluegraydarktransparent2">#d0101b37</color>
     <color name="black3">#ec000000</color>
+
     <!-- Colours...... -->
     <color name="blue1">#3ebeb0</color>
     <color name="blue2">#2abbbe</color>

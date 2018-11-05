@@ -199,17 +199,22 @@
 
                             </LinearLayout>
 
-                        </LinearLayout>
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"/>
 
-                        <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:layout_marginStart="@dimen/margin16dp"
-                            android:layout_marginEnd="@dimen/margin16dp"
-                            android:src="@drawable/ic_navigate_next_black_24dp"
-                            android:layout_centerVertical="true"
-                            android:layout_alignParentEnd="true"
-                            android:alpha="0.8"/>
+                            <ImageView
+                                android:id="@+id/icon"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_marginStart="@dimen/margin16dp"
+                                android:layout_marginEnd="@dimen/margin16dp"
+                                android:layout_gravity="center|fill_horizontal"
+                                android:src="@drawable/ic_navigate_next_black_24dp"
+                                android:alpha="0.8"/>
+
+                        </LinearLayout>
 
                     </RelativeLayout>
 
@@ -261,17 +266,22 @@
 
                             </LinearLayout>
 
-                        </LinearLayout>
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"/>
 
-                        <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:layout_marginStart="@dimen/margin16dp"
-                            android:layout_marginEnd="@dimen/margin16dp"
-                            android:src="@drawable/ic_navigate_next_black_24dp"
-                            android:layout_centerVertical="true"
-                            android:layout_alignParentEnd="true"
-                            android:alpha="0.8"/>
+                            <ImageView
+                                android:id="@+id/icon"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_marginStart="@dimen/margin16dp"
+                                android:layout_marginEnd="@dimen/margin16dp"
+                                android:layout_gravity="center|fill_horizontal"
+                                android:src="@drawable/ic_navigate_next_black_24dp"
+                                android:alpha="0.8"/>
+
+                        </LinearLayout>
 
                     </RelativeLayout>
 
@@ -323,17 +333,22 @@
 
                             </LinearLayout>
 
-                        </LinearLayout>
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"/>
 
-                        <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:layout_marginStart="@dimen/margin16dp"
-                            android:layout_marginEnd="@dimen/margin16dp"
-                            android:src="@drawable/ic_navigate_next_black_24dp"
-                            android:layout_centerVertical="true"
-                            android:layout_alignParentEnd="true"
-                            android:alpha="0.8"/>
+                            <ImageView
+                                android:id="@+id/icon"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_marginStart="@dimen/margin16dp"
+                                android:layout_marginEnd="@dimen/margin16dp"
+                                android:layout_gravity="center|fill_horizontal"
+                                android:src="@drawable/ic_navigate_next_black_24dp"
+                                android:alpha="0.8"/>
+
+                        </LinearLayout>
 
                     </RelativeLayout>
 

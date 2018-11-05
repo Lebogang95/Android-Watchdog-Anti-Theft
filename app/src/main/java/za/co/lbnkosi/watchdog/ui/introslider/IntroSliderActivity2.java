@@ -11,7 +11,6 @@ import android.widget.ImageView;
 
 import com.danimahardhika.cafebar.CafeBar;
 import com.danimahardhika.cafebar.CafeBarTheme;
-import com.hzn.lib.EasyTransition;
 import za.co.lbnkosi.watchdog.R;
 
 public class IntroSliderActivity2 extends AppCompatActivity {
@@ -19,7 +18,6 @@ public class IntroSliderActivity2 extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_introslider2);
-        EasyTransition.enter(IntroSliderActivity2.this);
 
         CheckBox checkBox = findViewById(R.id.checkbox);
 

@@ -24,9 +24,9 @@ public class Adapter1 extends RecyclerView.Adapter<Adapter1.ViewHolder> {
 
         ViewHolder(View v) {
             super(v);
-            MainHeader = v.findViewById(R.id.main_header);
-            SecondaryHeader = v.findViewById(R.id.secondary_header);
-            BannerImage = v.findViewById(R.id.banner_image);
+            MainHeader = v.findViewById(R.id.title);
+            SecondaryHeader = v.findViewById(R.id.description);
+            BannerImage = v.findViewById(R.id.icon);
         }
     }
 
@@ -39,7 +39,7 @@ public class Adapter1 extends RecyclerView.Adapter<Adapter1.ViewHolder> {
     public Adapter1.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
 
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_2,parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item,parent,false);
 
         return new ViewHolder(v);
     }

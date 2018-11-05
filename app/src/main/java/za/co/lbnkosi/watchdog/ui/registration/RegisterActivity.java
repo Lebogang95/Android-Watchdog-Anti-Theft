@@ -1,30 +1,18 @@
 package za.co.lbnkosi.watchdog.ui.registration;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-
-import com.google.firebase.auth.FirebaseAuth;
-import com.yqritc.scalablevideoview.ScalableType;
-import com.yqritc.scalablevideoview.ScalableVideoView;
-
-import java.io.IOException;
 
 import za.co.lbnkosi.watchdog.R;
 import za.co.lbnkosi.watchdog.firebase.register.RegistrationContract;
 import za.co.lbnkosi.watchdog.firebase.register.RegistrationPresenter;
 import za.co.lbnkosi.watchdog.ui.logind.LoginActivity;
 import za.co.lbnkosi.watchdog.ui.verification.VerificationActivity;
-import za.co.lbnkosi.watchdog.utils.BlurBack;
 
 public class RegisterActivity extends RegisterBaseActivity implements  RegistrationContract.View{
 

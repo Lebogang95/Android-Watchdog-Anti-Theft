@@ -12,8 +12,10 @@ import android.os.Bundle;
 import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyPermanentlyInvalidatedException;
 import android.security.keystore.KeyProperties;
+import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -49,12 +51,6 @@ public class FingerprintActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fingerprint);
         transparentStatusBar();
-        ImageView imageView = findViewById(R.id.imageView1);
-        imageView = findViewById(R.id.imageView1);
-        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.background18);
-        Bitmap blurredBitmap = BlurBack.blur( this, bm );
-        //imageView.setBackgroundDrawable( new BitmapDrawable( getResources(), blurredBitmap ) );
-        imageView.setImageBitmap(blurredBitmap);
 
         //securityPreference();
         fingerPrint();
@@ -217,5 +213,45 @@ public class FingerprintActivity extends BaseActivity {
                 }
             }
         }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        return false;
+    }
+
+    @Override
+    public void navDrawerFontStyle(int view) {
+
+    }
+
+    @Override
+    public void showToolBar(int view) {
+
+    }
+
+    @Override
+    public void signOutButtonClick(int view) {
+
+    }
+
+    @Override
+    public void onProfilePictureClick(int view) {
+
+    }
+
+    @Override
+    public void updateUI(int view) {
+
+    }
+
+    @Override
+    public void setBackground(ImageView imageView) {
+
+    }
+
+    @Override
+    public void blurBackground(int view) {
+
     }
 }

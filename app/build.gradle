@@ -21,6 +21,17 @@ android {
         }
     }
 
+    dataBinding {
+        enabled = true
+    }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE-FIREBASE.txt'
+        exclude 'META-INF/NOTICE'
+    }
+
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -45,42 +56,27 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    implementation 'com.google.android.gms:play-services-auth:16.0.1'
     //noinspection GradleCompatible
     implementation 'com.android.support:recyclerview-v7:28.0.0'
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation "com.android.support:support-compat:28.0.0"
     implementation 'com.android.support:cardview-v7:28.0.0'
-    implementation 'com.google.gms:google-services:4.1.0'
     implementation 'com.android.support:design:28.0.0'
-    implementation 'com.android.support:multidex:1.0.3'
     implementation 'com.jakewharton:butterknife:8.8.1'
     implementation 'com.android.support:support-v4:28.0.0'
     implementation 'com.android.support:support-vector-drawable:28.0.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-    implementation 'com.github.bumptech.glide:glide:3.7.0'
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'jp.wasabeef:fresco-processors:2.1.0'
     implementation 'jp.wasabeef:blurry:2.1.1'
     implementation 'com.linsea:universalvideoview:1.1.0@aar'
 
-    /**
-     * Encryption Libraries
-     * Don't remove
-     */
-    implementation 'com.scottyab:aescrypt:0.0.1'
 
     /**
      * External Libraries
      */
-    implementation 'com.ms-square:etsyblur:0.2.1'
-    implementation 'com.eightbitlab:supportrenderscriptblur:1.0.1'
-    implementation 'jp.wasabeef:blurry:2.1.1'
     implementation 'de.hdodenhof:circleimageview:2.2.0'
     implementation 'com.yqritc:android-scalablevideoview:1.0.4'
-    implementation 'at.favre.lib:dali:0.3.5'
-    implementation 'net.rimoto:intlphoneinput:1.0.1'
-    implementation 'com.dynamitechetan.flowinggradient:flowinggradient:1.1'
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.15'
     implementation 'com.android.support:design:28.0.0'
     implementation 'com.android.support:multidex:1.0.3'
@@ -90,27 +86,27 @@ dependencies {
      * Firebase Dependencies
      */
     implementation 'com.google.firebase:firebase-messaging:17.3.4'
-    implementation 'com.google.firebase:firebase-firestore:17.1.1'
-    implementation 'com.google.firebase:firebase-database:16.0.3'
+    implementation 'com.google.firebase:firebase-firestore:17.1.2'
+    implementation 'com.google.firebase:firebase-database:16.0.4'
     implementation 'com.firebase:firebase-client-android:2.5.0'
     implementation 'com.google.firebase:firebase-core:16.0.4'
-    implementation 'com.firebaseui:firebase-ui-database:3.3.1'
-    implementation 'com.firebaseui:firebase-ui-firestore:3.3.1'
     implementation 'com.google.firebase:firebase-auth:16.0.5'
-    implementation 'com.google.firebase:firebase-perf:16.1.2'
-    implementation 'com.google.firebase:firebase-storage:16.0.3'
+    implementation 'com.google.firebase:firebase-perf:16.2.0'
+    implementation 'com.google.firebase:firebase-storage:16.0.4'
+    //noinspection GradleCompatible
+    implementation 'com.google.gms:google-services:4.1.0'
+    implementation 'com.google.android.gms:play-services-auth:16.0.1'
+
+    //Firebase UI
     implementation 'com.firebaseui:firebase-ui-storage:0.6.0'
-    implementation 'com.github.huzenan:EasyTransition:v1.0.0'
-    implementation 'com.yqritc:android-scalablevideoview:1.0.4'
-    implementation 'me.biubiubiu.justifytext:library:1.1'
-    implementation 'cn.pedant.sweetalert:library:1.3'
+    implementation 'com.github.bumptech.glide:glide:3.8.0'
+    implementation 'com.firebaseui:firebase-ui-database:3.3.1'
+    implementation 'com.firebaseui:firebase-ui-firestore:3.3.0'
+
     implementation 'com.github.danimahardhika:cafebar:1.3.1'
-    implementation 'com.gelitenight.waveview:waveview:1.0.0'
+    implementation 'com.yqritc:android-scalablevideoview:1.0.4'
     implementation 'com.scwang.wave:MultiWaveHeader:1.0.0-alpha-1'
-    implementation 'com.getkeepsafe.taptargetview:taptargetview:1.12.0'
-    implementation 'devlight.io:arcprogressstackview:1.0.4'
-    implementation 'com.github.castorflex.smoothprogressbar:library:1.1.0'
-    implementation 'com.github.yalantis:Side-Menu.Android:1.0.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

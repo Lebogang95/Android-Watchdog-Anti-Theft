@@ -15,7 +15,6 @@ import android.widget.ImageView;
 
 import com.danimahardhika.cafebar.CafeBar;
 import com.danimahardhika.cafebar.CafeBarTheme;
-import com.hzn.lib.EasyTransition;
 
 import za.co.lbnkosi.watchdog.R;
 

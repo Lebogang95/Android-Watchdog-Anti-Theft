@@ -136,14 +136,6 @@
             android:layout_alignParentRight="true">
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/blackdot"
-                android:alpha="0.5"
-                android:layout_centerInParent="true"
-                android:visibility="gone"/>
-
-            <ImageView
                 android:id="@+id/next_activity"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -158,14 +150,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true">
-
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/blackdot"
-                android:alpha="0.5"
-                android:layout_centerInParent="true"
-                android:visibility="gone"/>
 
             <ImageView
                 android:id="@+id/previous_activity"

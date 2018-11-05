@@ -20,16 +20,13 @@ import java.util.Objects;
 
 import za.co.lbnkosi.watchdog.R;
 
-/*
- */
-
 public class ImageUploaderInteractor implements ImageUploaderContract.Intractor {
 
     private ImageUploaderContract.onUploadListener mOnUploadListener;
     private FirebaseStorage firebaseStorage;
     private StorageReference storageReference;
     private FirebaseAuth firebaseAuth;
-    String firebaseUser;
+    private String firebaseUser;
 
     ImageUploaderInteractor(ImageUploaderContract.onUploadListener onUploadListener){
         this.mOnUploadListener = onUploadListener;
@@ -77,14 +74,13 @@ public class ImageUploaderInteractor implements ImageUploaderContract.Intractor 
     public void updateProfilePictureOffline(Activity activity, ImageView imageView){
 
         //checkProfile(activity, imageView);
-
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = Objects.requireNonNull(firebaseAuth.getCurrentUser()).getEmail();
         storageReference = FirebaseStorage.getInstance().getReference().child(firebaseUser+"/"+ "proflePicture");
         Glide.with(activity)
                 .using(new FirebaseImageLoader())
                 .load(storageReference)
-                .error(R.drawable.background18)
+                .error(R.drawable.defaultprofilepicture)
                 .signature(new StringSignature(System.currentTimeMillis()+""))
                 .into(imageView);
 
@@ -109,7 +105,7 @@ public class ImageUploaderInteractor implements ImageUploaderContract.Intractor 
                 Glide.with(activity)
                         .using(new FirebaseImageLoader())
                         .load(storageReference)
-                        .error(R.drawable.background18)
+                        .error(R.drawable.defaultprofilepicture)
                         .signature(new StringSignature(System.currentTimeMillis()+""))
                         .into(imageView);
             }

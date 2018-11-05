@@ -2,30 +2,16 @@ package za.co.lbnkosi.watchdog.ui.logind;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.RectF;
-import android.media.MediaPlayer;
-import android.media.ThumbnailUtils;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.VideoView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.storage.StorageReference;
-import com.yqritc.scalablevideoview.ScalableType;
-import com.yqritc.scalablevideoview.ScalableVideoView;
-
-import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,7 +21,6 @@ import za.co.lbnkosi.watchdog.firebase.login.LoginContract;
 import za.co.lbnkosi.watchdog.firebase.login.LoginPresenter;
 import za.co.lbnkosi.watchdog.ui.registration.RegisterActivity;
 import za.co.lbnkosi.watchdog.ui.verification.VerificationActivity;
-import za.co.lbnkosi.watchdog.utils.BlurBack;
 
 
 /**
@@ -103,10 +88,6 @@ public class LoginActivity extends LoginBaseActivity implements LoginContract.Vi
     //If the credentials are incorrect then it displays a dialog error. The method can be found here
     @Override
     public void onLoginFailure(String message) {
-        final EditText editText = findViewById(R.id.login_emailedit);
-        final EditText editText1 = findViewById(R.id.login_passwordedit);
-        editText.setBackgroundResource(R.drawable.edittext_background3);
-        editText1.setBackgroundResource(R.drawable.edittext_background3);
         hideLoadingScreen();
         onError(message);
     }
@@ -127,37 +108,6 @@ public class LoginActivity extends LoginBaseActivity implements LoginContract.Vi
         }
     }
 
-    @Override
-    public void onClick(View v) {
-        if (v == buttonSignin){
-            EditText emailEditText = findViewById(R.id.login_emailedit);
-            EditText passwordEditText = findViewById(R.id.login_passwordedit);
-
-            emailEditText.setBackgroundResource(R.drawable.edittext_background3);
-            passwordEditText.setBackgroundResource(R.drawable.edittext_background3);
-
-            String email = emailEditText.getText().toString();
-            String password = passwordEditText.getText().toString();
-            showLoadingScreen();
-            initLogin(email, password);
-        }
-
-        if (v == buttonRegister){
-            showLoadingScreen();
-            startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
-        }
-
-        if (v == buttonForgotPassword){
-            //startActivity(new Intent(LoginActivity.this, LoginActivity.class));
-        }
-
-        if (v == textViewRegister){
-            showLoadingScreen();
-            startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
-            finish();
-        }
-    }
-
     private boolean isOnline() {
         ConnectivityManager cm =
                 (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -168,4 +118,12 @@ public class LoginActivity extends LoginBaseActivity implements LoginContract.Vi
         return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.button_signin:
+                initLogin(String.valueOf(signInEmail), String.valueOf(signInPassword));
+                break;
+        }
+    }
 }

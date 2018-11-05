@@ -42,7 +42,7 @@
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/citybackground1"
+                        android:src="@drawable/materialbackground3"
                         app:civ_border_color="@color/white"
                         app:civ_border_width="2dp"/>
 
@@ -142,7 +142,7 @@
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
-                    android:id="@+id/cardviewAccount2"
+                    android:id="@+id/cardviewUpdate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/margin16dp"
@@ -159,6 +159,7 @@
                             android:layout_marginStart="@dimen/margin16dp"
                             android:layout_marginTop="@dimen/margin16dp"
                             android:layout_marginBottom="@dimen/margin16dp"
+                            android:layout_marginEnd="@dimen/margin32dp"
                             android:orientation="horizontal">
 
                             <LinearLayout
@@ -205,7 +206,7 @@
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
-                    android:id="@+id/cardviewAccount3"
+                    android:id="@+id/cardviewFamilyLink"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/margin16dp"
@@ -222,6 +223,7 @@
                             android:layout_marginTop="@dimen/margin16dp"
                             android:layout_marginBottom="@dimen/margin16dp"
                             android:layout_marginStart="@dimen/margin16dp"
+                            android:layout_marginEnd="@dimen/margin32dp"
                             android:orientation="horizontal">
 
                             <LinearLayout
@@ -281,6 +283,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/margin32dp"
                             android:layout_marginTop="@dimen/margin16dp"
                             android:layout_marginBottom="@dimen/margin16dp"
                             android:orientation="horizontal">
@@ -319,7 +322,7 @@
                             android:layout_height="25dp"
                             android:layout_marginStart="@dimen/margin16dp"
                             android:layout_marginEnd="@dimen/margin16dp"
-                            android:src="@drawable/ic_navigate_next_black_24dp"
+                            android:src="@drawable/ic_error_orange_24dp"
                             android:layout_centerVertical="true"
                             android:layout_alignParentEnd="true"
                             android:alpha="0.8"/>
@@ -329,7 +332,7 @@
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
-                    android:id="@+id/cardviewAccount4"
+                    android:id="@+id/cardviewDeleteAccount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/margin16dp"
@@ -338,7 +341,9 @@
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin16dp"
+                        android:layout_marginEnd="@dimen/margin16dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -374,17 +379,22 @@
 
                             </LinearLayout>
 
-                        </LinearLayout>
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"/>
 
-                        <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:layout_marginStart="@dimen/margin16dp"
-                            android:layout_marginEnd="@dimen/margin16dp"
-                            android:src="@drawable/ic_navigate_next_black_24dp"
-                            android:layout_centerVertical="true"
-                            android:layout_alignParentEnd="true"
-                            android:alpha="0.8"/>
+                            <ImageView
+                                android:id="@+id/icon"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_marginStart="@dimen/margin16dp"
+                                android:layout_marginEnd="@dimen/margin16dp"
+                                android:layout_gravity="center|fill_horizontal"
+                                android:src="@drawable/ic_warning_black_24dp"
+                                android:alpha="0.8"/>
+
+                        </LinearLayout>
 
                     </RelativeLayout>
 
