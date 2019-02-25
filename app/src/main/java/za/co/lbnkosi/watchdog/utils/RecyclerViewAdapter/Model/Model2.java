@@ -1,11 +1,11 @@
-package za.co.lbnkosi.watchdog.utils;
+package za.co.lbnkosi.watchdog.utils.RecyclerViewAdapter.Model;
 
-public class Model1 {
+public class Model2 {
 
     private String main_header,secondary_header;
     private int banner_image_1;
 
-    public Model1(String main_header, String secondary_header, int banner_image){
+    public Model2(String main_header, String secondary_header, int banner_image){
 
         this.main_header = main_header;
         this.secondary_header = secondary_header;

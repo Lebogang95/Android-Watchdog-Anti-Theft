@@ -44,7 +44,7 @@
     <color name="bluegraydark">#101b37</color>
     <color name="bluegraydarktransparent">#c4101b37</color>
     <color name="bluegraydarktransparent2">#d0101b37</color>
-    <color name="black3">#ec000000</color>
+    <color name="black3">#000000</color>
 
     <!-- Colours...... -->
     <color name="blue1">#3ebeb0</color>

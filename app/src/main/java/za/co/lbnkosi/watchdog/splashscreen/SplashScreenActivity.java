@@ -1,32 +1,24 @@
 package za.co.lbnkosi.watchdog.splashscreen;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.KeyguardManager;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.fingerprint.FingerprintManager;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-
 import java.util.Objects;
-
 import za.co.lbnkosi.watchdog.MainActivity;
 import za.co.lbnkosi.watchdog.ui.logind.LoginActivity;
 import za.co.lbnkosi.watchdog.ui.verification.VerificationActivity;
@@ -34,49 +26,37 @@ import za.co.lbnkosi.watchdog.utils.FingerprintActivity;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
-    private FirebaseAuth mAuth;
+    public FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
+        FirebaseApp.initializeApp(this);
         super.onCreate(savedInstanceState);
-        mAuth = FirebaseAuth.getInstance();
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
     }
 
     @Override
     public void onStart() {
         super.onStart();
-
-        if (isOnline()){
-
-            // Check if user is signed in (non-null)
-            FirebaseUser currentUser = mAuth.getCurrentUser();
-
             // Checks if there isn't a user registered to use the app
-            if (currentUser == null){
+            if (user == null){
                 startActivity(new Intent(SplashScreenActivity.this, LoginActivity .class));
                 finish();
             }
             else {
                 IsEmailVerified();
             }
-        }
-        else{
-
-            startActivity(new Intent(SplashScreenActivity.this, LoginActivity.class));
-            finish();
-        }
     }
 
     private void IsEmailVerified() {
-        FirebaseUser user = mAuth.getCurrentUser();
-        assert user != null;
         if (user.isEmailVerified()){
             // If the users email has been verified, then it starts the main activity
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 fingerPrint();
             }
             else {
-                securityPreference2();
+                noFingerprint();
             }
         }
         else {
@@ -86,57 +66,42 @@ public class SplashScreenActivity extends AppCompatActivity {
         }
     }
 
-    private boolean isOnline() {
-        ConnectivityManager cm =
-                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo netInfo = null;
-        if (cm != null) {
-            netInfo = cm.getActiveNetworkInfo();
-        }
-        return netInfo != null && netInfo.isConnectedOrConnecting();
-    }
-
     public void securityPreference() {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         final FirebaseUser user = mAuth.getCurrentUser();
 
         if (user != null){
             final FirebaseFirestore db = FirebaseFirestore.getInstance();
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            db.collection("userdata").document("preferences").collection(Objects.requireNonNull(user.getEmail())).document("security");
-            }
+         DocumentReference docRef = db.collection("user_settings").document(Objects.requireNonNull(mAuth.getCurrentUser().getEmail())).collection("settings").document("security_settings");
+            docRef.get().addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    assert document != null;
+                    if (document.exists()) {
+                        Log.d("", "DocumentSnapshot data: " + document.getData());
+                        //name.setText(document.getString("name") + " "+ document.getString("surname"));
 
-            @SuppressLint({"NewApi", "LocalSuppress"}) DocumentReference docRef = db.collection("userdata").document("preferences").collection(Objects.requireNonNull(mAuth.getCurrentUser().getEmail())).document("security");
-            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                @SuppressLint("SetTextI18n")
-                @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                    if (task.isSuccessful()) {
-                        DocumentSnapshot document = task.getResult();
-                        if (document.exists()) {
-                            Log.d("", "DocumentSnapshot data: " + document.getData());
-                            //name.setText(document.getString("name") + " "+ document.getString("surname"));
+                        String userPr;
+                        userPr = document.getString("keep_me_signed_in");
 
-                            String userPr;
-                            userPr = document.getString("require_authentication");
+                        assert userPr != null;
+                        if (userPr.equals("false")){
+                            //startActivity(new Intent(SplashScreenActivity.this, FingerprintActivity.class));
+                            String userPr2;
+                            userPr2 = document.getString("fingerprint_unlock");
 
-                            if (userPr.equals("true")){
-                                //startActivity(new Intent(SplashScreenActivity.this, FingerprintActivity.class));
-                                String userPr2;
-                                userPr2 = document.getString("fingerprint_unlock");
-
-                                if (userPr2.equals("true")){
-                                    startActivity(new Intent(SplashScreenActivity.this, FingerprintActivity.class));
-                                }
-                                else {
-                                    startActivity(new Intent(SplashScreenActivity.this, LoginActivity.class));
-                                }
+                            assert userPr2 != null;
+                            if (userPr2.equals("true")){
+                                startActivity(new Intent(SplashScreenActivity.this, FingerprintActivity.class));
                             }
                             else {
-                                startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
+                                startActivity(new Intent(SplashScreenActivity.this, LoginActivity.class));
                             }
-
                         }
+                        else {
+                            startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
+                        }
+
                     }
                 }
             });
@@ -144,45 +109,36 @@ public class SplashScreenActivity extends AppCompatActivity {
 
     }
 
-    public void securityPreference2() {
+    public void noFingerprint() {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         final FirebaseUser user = mAuth.getCurrentUser();
-
         if (user != null){
             final FirebaseFirestore db = FirebaseFirestore.getInstance();
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                db.collection("userdata").document("preferences").collection(Objects.requireNonNull(user.getEmail())).document("security");
-            }
+            DocumentReference docRef = db.collection("user_settings").document(Objects.requireNonNull(mAuth.getCurrentUser().getEmail())).collection("settings").document("security_settings");
+            docRef.get().addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    assert document != null;
+                    if (document.exists()) {
+                        Log.d("", "DocumentSnapshot data: " + document.getData());
+                        //name.setText(document.getString("name") + " "+ document.getString("surname"));
 
-            DocumentReference docRef = db.collection("userdata").document("preferences").collection(Objects.requireNonNull(mAuth.getCurrentUser().getEmail())).document("security");
-            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                @SuppressLint("SetTextI18n")
-                @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                    if (task.isSuccessful()) {
-                        DocumentSnapshot document = task.getResult();
-                        if (document.exists()) {
-                            Log.d("", "DocumentSnapshot data: " + document.getData());
-                            //name.setText(document.getString("name") + " "+ document.getString("surname"));
+                        String userPr;
+                        userPr = document.getString("keep_me_signed_in");
 
-                            String userPr;
-                            userPr = document.getString("require_authentication");
+                        assert userPr != null;
+                        if (userPr.equals("true")){
+                            //startActivity(new Intent(SplashScreenActivity.this, FingerprintActivity.class));
+                            startActivity(new Intent(SplashScreenActivity.this, LoginActivity.class));
 
-                            if (userPr.equals("true")){
-                                //startActivity(new Intent(SplashScreenActivity.this, FingerprintActivity.class));
-                                startActivity(new Intent(SplashScreenActivity.this, LoginActivity.class));
-
-                            }
-                            else {
-                                startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
-                            }
-
+                        }
+                        else {
+                            startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
                         }
                     }
                 }
             });
         }
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -194,17 +150,9 @@ public class SplashScreenActivity extends AppCompatActivity {
         // Check whether the device has a Fingerprint sensor.
         if(!fingerprintManager.isHardwareDetected()){
 
-            /**
-             * An error message will be displayed if the device does not contain the fingerprint hardware.
-             * However if you plan to implement a default authentication method,
-             * you can redirect the user to a default authentication activity from here.
-             * Example:
-             * Intent intent = new Intent(this, DefaultAuthenticationActivity.class);
-             * startActivity(intent);
-             */
-
             startActivity(new Intent(SplashScreenActivity.this, LoginActivity.class));
-        }else {
+        }
+        else {
             // Checks whether fingerprint permission is set on manifest
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.USE_FINGERPRINT) != PackageManager.PERMISSION_GRANTED) {
                 startActivity(new Intent(SplashScreenActivity.this, LoginActivity.class));
@@ -218,7 +166,6 @@ public class SplashScreenActivity extends AppCompatActivity {
                         startActivity(new Intent(SplashScreenActivity.this, LoginActivity.class));
                     }else{
                         securityPreference();
-
                     }
                 }
             }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,84 +11,88 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.scwang.wave.MultiWaveHeader
-            android:id="@+id/waveHeader"
+        <RelativeLayout
+            android:id="@+id/headerLayout"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:scaleY="1"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+            android:layout_height="@dimen/waveViewHeight"
+            android:orientation="vertical"
             app:layout_constraintTop_toTopOf="parent"
-            app:mwhCloseColor="@color/colorPrimary"
-            app:mwhColorAlpha="0.30"
-            app:mwhGradientAngle="90"
-            app:mwhProgress="1"
-            app:mwhStartColor="@color/colorPrimary"
-            app:mwhVelocity="2"
-            app:mwhWaveHeight="30dp"
-            app:mwhWaves="MultiWave">
-
-        </com.scwang.wave.MultiWaveHeader>
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profilePic"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="@dimen/margin32dp"
-            android:src="@drawable/ic_add_circle_black_100dp"
-            app:civ_border_color="@color/white"
-            app:civ_border_width="2dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/waveHeader"
-            app:layout_constraintBottom_toBottomOf="@id/waveHeader"/>
+            app:layout_constraintBottom_toTopOf="@+id/textView1">
 
-        <TextView
-            android:id="@+id/nameTextview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin32dp"
-            android:fontFamily="@font/droid_sans_chinese"
-            android:text="@string/nullstring"
-            android:textColor="@color/textColorWhite"
-            android:textSize="@dimen/textSizeMedium"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/profilePic"/>
+            <com.scwang.wave.MultiWaveHeader
+                android:id="@+id/waveHeader"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="0dp"
+                android:scaleY="1"
+                app:mwhCloseColor="@color/colorPrimary"
+                app:mwhColorAlpha="0.30"
+                app:mwhGradientAngle="90"
+                app:mwhProgress="1"
+                app:mwhStartColor="@color/colorPrimary"
+                app:mwhVelocity="2"
+                app:mwhWaveHeight="30dp"
+                app:mwhWaves="MultiWave">
 
-        <LinearLayout
-            android:id="@+id/lin1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin32dp"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@id/nameTextview"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            </com.scwang.wave.MultiWaveHeader>
 
-            <TextView
-                android:id="@+id/watchdogText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin16dp"
-                android:layout_marginEnd="@dimen/margin8dp"
-                android:fontFamily="@font/droid_sans_chinese"
-                android:text="@string/watchdog_is"
-                android:textColor="@color/textColorWhite"
-                android:textSize="@dimen/textSizeMedium"/>
-
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profilePic"
+                android:layout_width="@dimen/homeProfilePicture"
+                android:layout_height="@dimen/homeProfilePicture"
+                android:layout_marginTop="@dimen/margin32dp"
+                android:src="@drawable/ic_add_circle_black_100dp"
+                android:layout_centerHorizontal="true"
+                app:civ_border_color="@color/white"
+                app:civ_border_width="2dp"/>
 
             <TextView
-                android:id="@+id/statusTextView"
+                android:id="@+id/nameTextview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/profilePic"
                 android:layout_marginTop="@dimen/margin16dp"
+                android:layout_centerHorizontal="true"
                 android:fontFamily="@font/droid_sans_chinese"
                 android:text="@string/nullstring"
-                android:textColor="@color/successColor"
-                android:textSize="@dimen/textSizeMedium"/>
+                android:textColor="@color/textColorWhite"
+                android:textSize="@dimen/homeNameTextView"/>
 
-        </LinearLayout>
+            <LinearLayout
+                android:id="@+id/lin1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nameTextview"
+                android:layout_marginTop="@dimen/margin8dp"
+                android:layout_centerHorizontal="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/watchdogText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin8dp"
+                    android:fontFamily="@font/droid_sans_chinese"
+                    android:text="@string/watchdog_is"
+                    android:textColor="@color/textColorWhite"
+                    android:textSize="@dimen/homeStatusTextView"/>
+
+                <TextView
+                    android:id="@+id/statusTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/droid_sans_chinese"
+                    android:text="@string/nullstring"
+                    android:textColor="@color/successColor"
+                    android:textSize="@dimen/homeStatusTextView"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
 
         <ImageView
             android:id="@+id/infoicon"
@@ -98,7 +103,8 @@
             android:layout_marginEnd="@dimen/margin16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/ic_info_outline_black_24dp"/>
+            android:src="@drawable/ic_info_outline_black_24dp"
+            tools:ignore="ContentDescription" />
 
         <LinearLayout
             android:id="@+id/textView1"
@@ -109,7 +115,7 @@
             android:orientation="vertical"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/waveHeader"
+            app:layout_constraintTop_toBottomOf="@id/headerLayout"
             app:layout_constraintBottom_toTopOf="@id/testRecycler">
 
             <TextView

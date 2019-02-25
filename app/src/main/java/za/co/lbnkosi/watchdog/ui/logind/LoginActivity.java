@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +13,8 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -75,6 +78,7 @@ public class LoginActivity extends LoginBaseActivity implements LoginContract.Vi
 
     //Calls the method which checks if the credentials the user entered are correct
     private void initLogin(String email, String password) {
+        Log.d("Email123456", email);
         mLoginPresenter.checkCredentials(this, email, password);
     }
 
@@ -122,7 +126,7 @@ public class LoginActivity extends LoginBaseActivity implements LoginContract.Vi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_signin:
-                initLogin(String.valueOf(signInEmail), String.valueOf(signInPassword));
+                initLogin(signInEmail.getText().toString(), signInPassword.getText().toString());
                 break;
         }
     }

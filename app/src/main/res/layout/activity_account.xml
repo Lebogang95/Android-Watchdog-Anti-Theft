@@ -1,410 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/backgroundColor">
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <android.support.v4.widget.NestedScrollView
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/banner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="300dp">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/materialbackground3"/>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/colorPrimary"
-                    android:alpha="0.9"/>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="50dp"
-                    android:layout_centerHorizontal="true"
-                    android:orientation="vertical"
-                    android:gravity="center">
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/materialbackground3"
-                        app:civ_border_color="@color/white"
-                        app:civ_border_width="2dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin16dp"
-                        android:text="Lebogang Nkosi"
-                        android:textColor="@color/textColorWhite"
-                        android:fontFamily="@font/droid_sans_chinese"
-                        android:textSize="@dimen/textSizeLarge"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin8dp"
-                        android:text="nkosilebogang95@gmail.com"
-                        android:textColor="@color/textColorWhite"
-                        android:fontFamily="@font/droid_sans_chinese"
-                        android:textSize="@dimen/textSizeSmall"/>
-
-                </LinearLayout>
-
-                <ImageView
-                    android:id="@+id/backicon"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginStart="@dimen/margin16dp"
-                    android:layout_marginTop="@dimen/margin16dp"
-                    android:layout_marginEnd="@dimen/margin16dp"
-                    android:src="@drawable/ic_navigate_before_black_24dp"/>
-
-            </RelativeLayout>
+            android:layout_height="300dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin16dp"
-                android:layout_marginEnd="@dimen/margin16dp"
-                android:layout_marginTop="-50dp"
-                android:layout_marginBottom="@dimen/margin16dp"
+                android:layout_marginTop="50dp"
+                android:layout_centerHorizontal="true"
                 android:orientation="vertical"
-                android:layout_centerInParent="true">
+                android:gravity="center">
 
-                <android.support.v7.widget.CardView
-                    android:id="@+id/cardviewAccount"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_marginBottom="@dimen/margin16dp"
-                    app:cardElevation="0dp"
-                    app:cardCornerRadius="5dp">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/materialbackground3"
+                    app:civ_border_color="@color/white"
+                    app:civ_border_width="2dp"/>
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin16dp"
-                            android:layout_marginBottom="@dimen/margin16dp"
-                            android:orientation="horizontal"
-                            android:layout_centerInParent="true"
-                            android:gravity="center">
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:layout_gravity="center_vertical">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginBottom="5dp"
-                                    android:text="Hi Lebogang"
-                                    android:textStyle="bold"
-                                    android:textSize="@dimen/textSizeLarge"
-                                    android:textColor="@color/blueGrey"
-                                    android:fontFamily="@font/droid_sans_chinese"
-                                    android:gravity="center"
-                                    android:alpha="0.8"/>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Make changes to your account here"
-                                    android:textColor="@color/textColorWhiteOpaque"
-                                    android:fontFamily="@font/droid_sans_chinese"/>
-
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                    </RelativeLayout>
-
-                </android.support.v7.widget.CardView>
-
-                <android.support.v7.widget.CardView
-                    android:id="@+id/cardviewUpdate"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin16dp"
-                    app:cardElevation="0dp"
-                    app:cardCornerRadius="5dp">
+                    android:layout_marginTop="@dimen/margin16dp"
+                    android:text="Lebogang Nkosi"
+                    android:textColor="@color/blackOpaque2"
+                    android:fontFamily="@font/droid_sans_chinese"
+                    android:textSize="@dimen/textSizeLarge"/>
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/margin16dp"
-                            android:layout_marginTop="@dimen/margin16dp"
-                            android:layout_marginBottom="@dimen/margin16dp"
-                            android:layout_marginEnd="@dimen/margin32dp"
-                            android:orientation="horizontal">
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:layout_gravity="center_vertical">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginBottom="5dp"
-                                    android:text="Update"
-                                    android:textStyle="bold"
-                                    android:textSize="@dimen/textSizeLarge"
-                                    android:textColor="@color/blueGrey"
-                                    android:fontFamily="@font/droid_sans_chinese"
-                                    android:alpha="0.8"/>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginEnd="@dimen/margin32dp"
-                                    android:text="Update your account details such as your name and profile picture"
-                                    android:textColor="@color/textColorWhiteOpaque"
-                                    android:fontFamily="@font/droid_sans_chinese"/>
-
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                        <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:layout_marginStart="@dimen/margin16dp"
-                            android:layout_marginEnd="@dimen/margin16dp"
-                            android:src="@drawable/ic_navigate_next_black_24dp"
-                            android:layout_centerVertical="true"
-                            android:layout_alignParentEnd="true"
-                            android:alpha="0.8"/>
-
-                    </RelativeLayout>
-
-                </android.support.v7.widget.CardView>
-
-                <android.support.v7.widget.CardView
-                    android:id="@+id/cardviewFamilyLink"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin16dp"
-                    app:cardElevation="0dp"
-                    app:cardCornerRadius="5dp">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin16dp"
-                            android:layout_marginBottom="@dimen/margin16dp"
-                            android:layout_marginStart="@dimen/margin16dp"
-                            android:layout_marginEnd="@dimen/margin32dp"
-                            android:orientation="horizontal">
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:layout_gravity="center_vertical">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginBottom="5dp"
-                                    android:text="Family Link"
-                                    android:textStyle="bold"
-                                    android:textSize="@dimen/textSizeLarge"
-                                    android:textColor="@color/blueGrey"
-                                    android:fontFamily="@font/droid_sans_chinese"
-                                    android:alpha="0.8"/>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Here you can add family and friends as trusted members"
-                                    android:textColor="@color/textColorWhiteOpaque"
-                                    android:fontFamily="@font/droid_sans_chinese"/>
-
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                        <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:layout_marginStart="@dimen/margin16dp"
-                            android:layout_marginEnd="@dimen/margin16dp"
-                            android:src="@drawable/ic_navigate_next_black_24dp"
-                            android:layout_centerVertical="true"
-                            android:layout_alignParentEnd="true"
-                            android:alpha="0.8"/>
-
-                    </RelativeLayout>
-
-                </android.support.v7.widget.CardView>
-
-                <android.support.v7.widget.CardView
-                    android:id="@+id/cardviewSignOut"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin16dp"
-                    app:cardElevation="0dp"
-                    app:cardCornerRadius="5dp">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="@dimen/margin32dp"
-                            android:layout_marginTop="@dimen/margin16dp"
-                            android:layout_marginBottom="@dimen/margin16dp"
-                            android:orientation="horizontal">
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/margin16dp"
-                                android:orientation="vertical"
-                                android:layout_gravity="center_vertical">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginBottom="5dp"
-                                    android:text="Sign Out"
-                                    android:textStyle="bold"
-                                    android:textSize="@dimen/textSizeLarge"
-                                    android:textColor="@color/blueGrey"
-                                    android:fontFamily="@font/droid_sans_chinese"
-                                    android:alpha="0.8"/>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="All of your settings/configurations are stored on the cloud"
-                                    android:textColor="@color/textColorWhiteOpaque"
-                                    android:fontFamily="@font/droid_sans_chinese"/>
-
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                        <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:layout_marginStart="@dimen/margin16dp"
-                            android:layout_marginEnd="@dimen/margin16dp"
-                            android:src="@drawable/ic_error_orange_24dp"
-                            android:layout_centerVertical="true"
-                            android:layout_alignParentEnd="true"
-                            android:alpha="0.8"/>
-
-                    </RelativeLayout>
-
-                </android.support.v7.widget.CardView>
-
-                <android.support.v7.widget.CardView
-                    android:id="@+id/cardviewDeleteAccount"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin16dp"
-                    app:cardElevation="0dp"
-                    app:cardCornerRadius="5dp">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/margin16dp"
-                        android:layout_marginEnd="@dimen/margin16dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin16dp"
-                            android:layout_marginBottom="@dimen/margin16dp"
-                            android:orientation="horizontal">
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/margin16dp"
-                                android:orientation="vertical"
-                                android:layout_gravity="center_vertical">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginBottom="5dp"
-                                    android:text="Delete Account"
-                                    android:textStyle="bold"
-                                    android:textSize="@dimen/textSizeLarge"
-                                    android:textColor="@color/blueGrey"
-                                    android:fontFamily="@font/droid_sans_chinese"
-                                    android:alpha="0.8"/>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Delete your account and information around it"
-                                    android:textColor="@color/textColorWhiteOpaque"
-                                    android:fontFamily="@font/droid_sans_chinese"/>
-
-                            </LinearLayout>
-
-                            <View
-                                android:layout_width="0dp"
-                                android:layout_height="0dp"
-                                android:layout_weight="1"/>
-
-                            <ImageView
-                                android:id="@+id/icon"
-                                android:layout_width="25dp"
-                                android:layout_height="25dp"
-                                android:layout_marginStart="@dimen/margin16dp"
-                                android:layout_marginEnd="@dimen/margin16dp"
-                                android:layout_gravity="center|fill_horizontal"
-                                android:src="@drawable/ic_warning_black_24dp"
-                                android:alpha="0.8"/>
-
-                        </LinearLayout>
-
-                    </RelativeLayout>
-
-                </android.support.v7.widget.CardView>
+                    android:layout_marginTop="@dimen/margin8dp"
+                    android:text="nkosilebogang95@gmail.com"
+                    android:textColor="@color/blackOpaque2"
+                    android:fontFamily="@font/droid_sans_chinese"
+                    android:textSize="@dimen/textSizeSmall"/>
 
             </LinearLayout>
 
+        </RelativeLayout>
 
-        </LinearLayout>
+        <ImageView
+            android:id="@+id/backicon"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="@dimen/margin16dp"
+            android:layout_marginTop="@dimen/margin16dp"
+            android:layout_marginEnd="@dimen/margin16dp"
+            android:src="@drawable/ic_navigate_before_black_24dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
-    </android.support.v4.widget.NestedScrollView>
 
-</RelativeLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/testRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin16dp"
+            android:divider="#00000000"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/banner"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.v4.widget.NestedScrollView>

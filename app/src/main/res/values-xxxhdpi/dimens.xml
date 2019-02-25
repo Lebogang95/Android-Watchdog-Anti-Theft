@@ -14,4 +14,10 @@
     <dimen name="editTextSmall">30dp</dimen>
     <dimen name="textSizeLargex">20sp</dimen>
 
+    <!-- Image Dimensions -->
+    <dimen name="waveViewHeight">300dp</dimen>
+    <dimen name="homeProfilePicture">80dp</dimen>
+    <dimen name="homeNameTextView">16sp</dimen>
+    <dimen name="homeStatusTextView">18sp</dimen>
+
 </resources>
